@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import auth_apis from "../../apis/modules/auth_apis";
 import {ValidationObserver, ValidationProvider} from 'vee-validate'
 import ToastMixin from "../../mixins/ToastMixin";
+import {mapActions} from 'vuex'
 export default {
   name: "login",
   components: {
@@ -51,9 +51,12 @@ export default {
   },
 
   methods: {
+    ...mapActions(['login']),
     async signIN() {
       try {
-        let respond = await auth_apis.login(this.form)
+        if (await this.$refs.loginValidation.validate()){
+          await this.login(this.form)
+        }
       } catch (e) {
         this.danger('Your username or password is incorrect')
       }
