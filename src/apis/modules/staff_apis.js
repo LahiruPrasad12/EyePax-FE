@@ -3,5 +3,5 @@ const baseURL = '/api/v1'
 
 export default {
   login: payload => api.post(`${baseURL}/auth/signing`,payload),
-  getAllStaff: () => api.get(`${baseURL}/admin/staff?account_type=admin`)
+  getAllStaff: (role) => api.get(`${baseURL}/admin/staff${role?`?account_type=${role}`:''}`)
 }

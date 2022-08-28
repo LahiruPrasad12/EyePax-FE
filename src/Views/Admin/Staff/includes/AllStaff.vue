@@ -1,6 +1,13 @@
 <template>
 
   <div class="container">
+    <b-field class="mt-2" >
+      <b-select placeholder="Select a role" v-model="selected_role" @change="filterStaff()">
+        <option value="admin">Admin</option>
+        <option value="staff">Staff</option>
+        <option value="stock-manager">Stock manager</option>
+      </b-select>
+    </b-field>
     <b-table
       :data="staff"
       ref="staffTable"
@@ -94,6 +101,7 @@ export default {
   },
   data(){
     return {
+      selected_role : undefined,
       fields: [
         {
           field: 'id',
@@ -133,11 +141,16 @@ export default {
   computed: {
     ...mapGetters(['currentUser'])
   },
+  watch:{
+    selected_role(){
+      this.getAllStaff(this.selected_role)
+    }
+  },
   methods:{
-    async getAllStaff(){
+    async getAllStaff(selected_role){
       try {
         this.is_table_loading = true
-        let respond = (await staffApis.getAllStaff()).data.data.users
+        let respond = (await staffApis.getAllStaff(selected_role)).data.data.users
         this.staff = respond.map((e,index)=>({
           id : index+1,
           first_name : e.first_name,
@@ -163,7 +176,7 @@ export default {
   },
 
   async mounted() {
-    await this.getAllStaff()
+    await this.getAllStaff(this.selected_role)
   }
 }
 </script>
