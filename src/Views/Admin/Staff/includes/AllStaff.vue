@@ -1,19 +1,111 @@
 <template>
-  <b-table :data="data" :columns="columns"></b-table>
+
+  <div class="container">
+    <b-button type="is-primary" @click="openModel">Create Notice</b-button>
+    <b-table
+      :data="staff"
+      ref="staffTable"
+      :loading="is_table_loading"
+      hover
+      responsive
+    >
+      <b-table-column field="id" label="ID">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.id }}
+        </template>
+      </b-table-column>
+      <b-table-column field="first_name" label="Title">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.first_name }}
+        </template>
+      </b-table-column>
+      <b-table-column field="last_name" label="Description">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.last_name }}
+        </template>
+      </b-table-column>
+      <b-table-column field="email" label="Description">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.email }}
+        </template>
+      </b-table-column>
+      <b-table-column field="DOB" label="Description">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.DOB }}
+        </template>
+      </b-table-column>
+      <b-table-column field="mobile" label="Description">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.mobile }}
+        </template>
+      </b-table-column>
+      <b-table-column field="role" label="Description">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.role }}
+        </template>
+      </b-table-column>
+
+      <b-table-column field="action" label="Action">
+        <template v-slot="props">
+          <b-button @click="editeColumn(props.row)">Edit</b-button>
+        </template>
+      </b-table-column>
+
+    </b-table>
+<!--    <createNotice ref="create_form"/>-->
+<!--    <editeNotice ref="edit_form"/>-->
+  </div>
 </template>
 
 <script>
+import staffApis from '../../../../apis/modules/staff_apis'
+// import createNotice from "./modals/create-notice";
+// import editeNotice from "./modals/edit-notices";
+import {mapGetters} from 'vuex'
+
+
 export default {
-  data() {
+  name: "index",
+  components :{
+  },
+  data(){
     return {
-      data: [
-        { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male' },
-        { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016-12-15 06:00:53', 'gender': 'Male' },
-        { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016-04-26 06:26:28', 'gender': 'Female' },
-        { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016-04-10 10:28:46', 'gender': 'Male' },
-        { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016-12-06 14:38:38', 'gender': 'Female' }
-      ],
-      columns: [
+      fields: [
         {
           field: 'id',
           label: 'ID',
@@ -29,16 +121,69 @@ export default {
           label: 'Last Name',
         },
         {
-          field: 'date',
-          label: 'Date',
-          centered: true
+          field: 'email',
+          label: 'Email',
         },
         {
-          field: 'gender',
-          label: 'Gender',
-        }
-      ]
+          field: 'DOB',
+          label: 'Date OF Birth',
+        },
+        {
+          field: 'mobile',
+          label: 'Mobile',
+        },
+        {
+          field: 'role',
+          label: 'Role',
+        },
+      ],
+      staff : [],
+      is_table_loading:false
     }
+  },
+  computed: {
+    ...mapGetters(['currentUser'])
+  },
+  methods:{
+    async getAllStaff(){
+      try {
+        this.is_table_loading = true
+        let respond = (await staffApis.getAllStaff()).data.data.users
+        this.staff = respond.map((e,index)=>({
+          id : index+1,
+          first_name : e.first_name,
+          last_name : e.last_name,
+          email : e.email,
+          DOB : e.DOB,
+          mobile : e.mobile,
+          role : e.role
+        }))
+      }catch (e) {
+
+      }
+      this.is_table_loading = false
+    },
+
+    openModel (){
+      this.$refs.create_form.openForm()
+    },
+
+    closeModel(){
+      this.getAllStaff()
+    },
+
+    editeColumn(data){
+      this.$refs.edit_form.openForm(data)
+      console.log(data)
+    }
+  },
+
+  async mounted() {
+    await this.getAllStaff()
   }
 }
 </script>
+
+<style scoped>
+
+</style>

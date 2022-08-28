@@ -8,7 +8,7 @@
 import AllStaff from "./includes/AllStaff";
 export default {
   name: "index",
-  components: {AllStaff}
+  components: {AllStaff},
 }
 </script>
 
