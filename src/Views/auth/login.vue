@@ -33,12 +33,14 @@
 <script>
 import auth_apis from "../../apis/modules/auth_apis";
 import {ValidationObserver, ValidationProvider} from 'vee-validate'
+import ToastMixin from "../../mixins/ToastMixin";
 export default {
   name: "login",
   components: {
     ValidationProvider,
     ValidationObserver
   },
+  mixins: [ToastMixin],
   data() {
     return {
       form: {
@@ -51,9 +53,9 @@ export default {
   methods: {
     async signIN() {
       try {
-        let respond = auth_apis.login(this.form)
+        let respond = await auth_apis.login(this.form)
       } catch (e) {
-
+        this.danger('Your username or password is incorrect')
       }
     }
   }
