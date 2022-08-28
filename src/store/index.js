@@ -26,9 +26,10 @@ export default  new Vuex.Store({
         email : form.email,
         password : form.password
       }
-      let respond = (await authAPI.login(payload)).data.data.user
-      console.log(respond)
-      commit('SET_CURRENT_USER',respond)
+      let respond = (await authAPI.login(payload)).data
+      localStorage.setItem("JWT", respond.token);
+      console.log(respond.data.user)
+      commit('SET_CURRENT_USER',respond.data.user)
 
     }
   }
