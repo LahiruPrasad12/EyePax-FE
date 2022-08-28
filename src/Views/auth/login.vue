@@ -58,7 +58,8 @@ export default {
       try {
         this.is_btn_loading = true
         if (await this.$refs.loginValidation.validate()){
-          await this.login(this.form)
+          let respond = await this.login(this.form)
+          console.log(respond)
         }
       } catch (e) {
         this.danger('Your username or password is incorrect')
