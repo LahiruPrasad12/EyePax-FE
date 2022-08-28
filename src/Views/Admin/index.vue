@@ -1,5 +1,5 @@
 <template>
-
+ <h1 class="container is-max-desktop mb-5">Admin Home</h1>
 </template>
 
 <script>
