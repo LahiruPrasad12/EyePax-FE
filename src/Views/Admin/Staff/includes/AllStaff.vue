@@ -19,7 +19,7 @@
           {{ props.row.id }}
         </template>
       </b-table-column>
-      <b-table-column field="first_name" label="Title">
+      <b-table-column field="first_name" label="First Name">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
@@ -29,7 +29,7 @@
           {{ props.row.first_name }}
         </template>
       </b-table-column>
-      <b-table-column field="last_name" label="Description">
+      <b-table-column field="last_name" label="Last Name">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
@@ -39,7 +39,7 @@
           {{ props.row.last_name }}
         </template>
       </b-table-column>
-      <b-table-column field="email" label="Description">
+      <b-table-column field="email" label="Email">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
@@ -49,7 +49,7 @@
           {{ props.row.email }}
         </template>
       </b-table-column>
-      <b-table-column field="DOB" label="Description">
+      <b-table-column field="DOB" label="DOB">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
@@ -59,7 +59,7 @@
           {{ props.row.DOB }}
         </template>
       </b-table-column>
-      <b-table-column field="mobile" label="Description">
+      <b-table-column field="mobile" label="Mobile">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
@@ -67,16 +67,6 @@
         </template>
         <template v-slot="props">
           {{ props.row.mobile }}
-        </template>
-      </b-table-column>
-      <b-table-column field="role" label="Description">
-        <template v-slot:header="{ column }">
-          <b-tooltip :label="column.label" append-to-body dashed>
-            {{ column.label }}
-          </b-tooltip>
-        </template>
-        <template v-slot="props">
-          {{ props.row.role }}
         </template>
       </b-table-column>
 
