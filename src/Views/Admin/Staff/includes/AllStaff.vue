@@ -1,7 +1,6 @@
 <template>
 
   <div class="container">
-    <b-button type="is-primary" @click="openModel">Create Notice</b-button>
     <b-table
       :data="staff"
       ref="staffTable"
@@ -154,17 +153,12 @@ export default {
       this.is_table_loading = false
     },
 
-    openModel (){
-      this.$refs.create_form.openForm()
-    },
-
     closeModel(){
       this.getAllStaff()
     },
 
     editeColumn(data){
-      this.$refs.edit_form.openForm(data)
-      console.log(data)
+
     }
   },
 
