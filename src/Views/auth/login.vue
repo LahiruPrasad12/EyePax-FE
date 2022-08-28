@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .container{
-  margin-top: 10%;
+
   width: auto;
 }
 </style>
