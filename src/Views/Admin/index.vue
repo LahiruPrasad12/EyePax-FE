@@ -1,5 +1,7 @@
 <template>
- <h1 class="container is-max-desktop mb-5">Admin Home</h1>
+  <div class="container is-max-desktop mb-5">
+    Admin Home
+  </div>
 </template>
 
 <script>

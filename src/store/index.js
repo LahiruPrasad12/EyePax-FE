@@ -32,7 +32,7 @@ export default  new Vuex.Store({
       console.log(respond.data.user)
       commit('SET_CURRENT_USER',respond.data.user)
       if(respond.data.user.account_type === 'admin'){
-        await router.replace('/admin-home')
+        await router.replace('/admin/home')
       }
     }
   }
