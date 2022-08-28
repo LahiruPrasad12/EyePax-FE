@@ -92,9 +92,6 @@
 import staffApis from '../../../../apis/modules/staff_apis'
 // import createNotice from "./modals/create-notice";
 // import editeNotice from "./modals/edit-notices";
-import {mapGetters} from 'vuex'
-
-
 export default {
   name: "index",
   components :{
@@ -137,9 +134,6 @@ export default {
       staff : [],
       is_table_loading:false
     }
-  },
-  computed: {
-    ...mapGetters(['currentUser'])
   },
   watch:{
     selected_role(){
