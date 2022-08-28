@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import authAPI from "@/apis/modules/auth_apis";
+import router from "../router";
 
 
 Vue.use(Vuex);
@@ -30,7 +31,9 @@ export default  new Vuex.Store({
       localStorage.setItem("JWT", respond.token);
       console.log(respond.data.user)
       commit('SET_CURRENT_USER',respond.data.user)
-
+      if(respond.data.user.account_type === 'admin'){
+        await router.replace('/admin-home')
+      }
     }
   }
 })
