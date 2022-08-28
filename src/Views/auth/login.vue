@@ -22,8 +22,9 @@
           <input v-model="form.password" class="input" placeholder="********" type="password">
         </div>
       </div>
-
-      <button class="button is-primary" @click="signIN">Sign in</button>
+        <button :disabled="is_btn_loading" class="button is-primary" @click="signIN">
+          {{ is_btn_loading ? 'Signing....' : 'Sign in' }}
+        </button>
       </validation-observer>
     </form>
   </div>
@@ -43,6 +44,7 @@ export default {
   mixins: [ToastMixin],
   data() {
     return {
+      is_btn_loading: false,
       form: {
         email: '',
         password: ''
@@ -54,12 +56,14 @@ export default {
     ...mapActions(['login']),
     async signIN() {
       try {
+        this.is_btn_loading = true
         if (await this.$refs.loginValidation.validate()){
           await this.login(this.form)
         }
       } catch (e) {
         this.danger('Your username or password is incorrect')
       }
+      this.is_btn_loading = false
     }
   }
 
