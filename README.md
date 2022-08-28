@@ -1,8 +1,6 @@
-# frontend
+# EyePack Web Application Frontend
 
-> EyePack Web Application
-
-## Build Setup
+## Intro
 ``` bash
 EyePax is a Sri Lankan-based IT company with 200 employees. Because of the huge number of
 employees, they have decided to maintain this inventory management system. Within the company staff
