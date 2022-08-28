@@ -17,6 +17,35 @@ Vue.use(Buefy)
 
 Vue.config.productionTip = false
 
+// custom validation
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
+import { numeric, required, email, min, max } from 'vee-validate/dist/rules'
+
+extend('numeric', numeric);
+
+extend('required', {
+  ...required,
+  message : 'This field is required'
+})
+
+extend('emailTest', {
+  validate: (value) => value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
+  message : 'Please enter valid email address'
+})
+
+extend('password', {
+  validate: (value) => value.match( /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()]).{8,}/),
+  message: 'Your {_field_} must contain at least one uppercase, one lowercase, one special character and one digit',
+})
+
+extend('same_password', {
+  params: ['target'],
+  validate (value, {target}) {
+    return value === target
+  },
+  message: 'Password confirmation should be matched'
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

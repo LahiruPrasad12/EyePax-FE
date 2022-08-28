@@ -1,11 +1,19 @@
 <template>
   <div class="container is-max-desktop">
     <form class="box">
+      <validation-observer ref="loginValidation">
       <div class="field">
+        <validation-provider
+          #default="{ errors }"
+          name="Email"
+          rules="required|emailTest"
+        >
         <label class="label">Email</label>
         <div class="control">
           <input v-model="form.email" class="input" placeholder="e.g. alex@example.com" type="email">
         </div>
+          <small class="text-danger">{{ errors[0] }}</small>
+        </validation-provider>
       </div>
 
       <div class="field">
@@ -16,6 +24,7 @@
       </div>
 
       <button class="button is-primary" @click="signIN">Sign in</button>
+      </validation-observer>
     </form>
   </div>
 
@@ -23,9 +32,13 @@
 
 <script>
 import auth_apis from "../../apis/modules/auth_apis";
-
+import {ValidationObserver, ValidationProvider} from 'vee-validate'
 export default {
   name: "login",
+  components: {
+    ValidationProvider,
+    ValidationObserver
+  },
   data() {
     return {
       form: {
