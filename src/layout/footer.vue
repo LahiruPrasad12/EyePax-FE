@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer mt-5">
+  <footer class="footer" style="margin-top: 30%">
     <div class="content has-text-centered">
       <p>
         <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed

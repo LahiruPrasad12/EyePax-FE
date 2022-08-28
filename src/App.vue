@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header/>
+    <AdminSideNav/>
     <router-view/>
     <Footer/>
   </div>
@@ -9,9 +10,10 @@
 <script>
 import Footer from "./layout/footer";
 import Header from "./layout/header";
+import AdminSideNav from "./layout/admin-side-nav";
 export default {
   name: 'App',
-  components: {Header, Footer}
+  components: {Header, Footer,AdminSideNav}
 }
 </script>
 
