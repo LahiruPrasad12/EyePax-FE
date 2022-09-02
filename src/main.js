@@ -22,6 +22,7 @@ Vue.config.productionTip = false
 // custom validation
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { numeric, required, email, min, max } from 'vee-validate/dist/rules'
+import ToastMixin from "./mixins/ToastMixin";
 
 extend('numeric', numeric);
 
@@ -54,5 +55,6 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  mixins: [ToastMixin]
 })

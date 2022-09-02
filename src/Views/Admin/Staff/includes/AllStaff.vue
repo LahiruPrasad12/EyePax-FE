@@ -2,7 +2,8 @@
 
   <div class="container">
     <b-field class="mt-2" >
-      <b-select placeholder="Select a role" v-model="selected_role" @change="filterStaff()">
+      <b-select placeholder="Select a role" v-model="selected_role">
+        <option value="">None</option>
         <option value="admin">Admin</option>
         <option value="staff">Staff</option>
         <option value="stock-manager">Stock manager</option>
@@ -83,18 +84,20 @@
       </b-table-column>
 
     </b-table>
+    <create_staff ref="create_staff" @getAllStaff="getAllStaff"/>
 <!--    <createNotice ref="create_form"/>-->
 <!--    <editeNotice ref="edit_form"/>-->
   </div>
 </template>
 
 <script>
-import staffApis from '../../../../apis/modules/staff_apis'
-// import createNotice from "./modals/create-notice";
-// import editeNotice from "./modals/edit-notices";
+import staffApis from '../../../../apis/modules/admin_pais/staff_apis'
+import create_staff from "./create_staff";
+
 export default {
   name: "index",
   components :{
+    create_staff
   },
   data(){
     return {
@@ -161,7 +164,7 @@ export default {
     },
 
     closeModel(){
-      this.getAllStaff()
+      this.getAllStaff(this.selected_role)
     },
 
     editeColumn(data){
