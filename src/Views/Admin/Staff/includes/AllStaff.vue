@@ -1,14 +1,6 @@
 <template>
 
   <div class="container">
-    <b-field class="mt-2">
-      <b-select v-model="selected_role" placeholder="Select a role">
-        <option value="">None</option>
-        <option value="admin">Admin</option>
-        <option value="staff">Staff</option>
-        <option value="stock-manager">Stock manager</option>
-      </b-select>
-    </b-field>
     <b-table
       ref="staffTable"
       :data="staff"
