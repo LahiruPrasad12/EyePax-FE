@@ -1,7 +1,7 @@
 <template>
   <section>
     <b-modal
-      v-model="is_create_staff_modal_active"
+      v-model="is_update_staff_modal_active"
       :destroy-on-hide="false"
       aria-label="Example Modal"
       aria-modal
@@ -11,12 +11,12 @@
       trap-focus>
       <div class="card">
         <header class="card-header">
-          Create New Staff
+          Update {{form.first_name}}'s details
         </header>
         <div class="card-content">
           <template>
             <section>
-              <validation-observer ref="createStaffValidation">
+              <validation-observer ref="updateStaffValidation">
                 <b-row>
                   <b-col md="6">
                     <validation-provider
@@ -88,7 +88,7 @@
                         :message="errors[0]"
                         :type="errors[0]?'is-danger':''"
                         label="Role">
-                        <b-select v-model="form.role" placeholder="Select a character">
+                        <b-select v-model="form.account_type" placeholder="Select a character">
                           <option value="">None</option>
                           <option value="staff">Staff</option>
                           <option value="admin">admin</option>
@@ -110,15 +110,15 @@
                         label="DOB">
                         <b-datepicker
                           v-model="form.DOB"
-                          :show-week-number="showWeekNumber"
-                          locale="locale"
-                          placeholder="Click to select..."
-                          icon="calendar-today"
                           :icon-right="selected ? 'close-circle' : ''"
-                          icon-right-clickable
-                          open-on-focus
+                          :show-week-number="showWeekNumber"
                           append-to-body
                           close-on-click
+                          icon="calendar-today"
+                          icon-right-clickable
+                          locale="locale"
+                          open-on-focus
+                          placeholder="Click to select..."
                           trap-focus>
                         </b-datepicker>
                       </b-field>
@@ -162,8 +162,11 @@
                     </validation-provider>
                   </b-col>
                   <b-col class="mt-5" md="12">
-                    <b-button :disabled="is_btn_loading" :loading="is_btn_loading" class="ml-5" style="float: right" type="is-info" @click="createStaff">Create</b-button>
-                    <b-button class="ml-5" style="float: right" type="is-secondary" @click="closeModal">Cancel</b-button>
+                    <b-button :disabled="is_btn_loading" :loading="is_btn_loading" class="ml-5" style="float: right"
+                              type="is-info" @click="updateStaff">Update
+                    </b-button>
+                    <b-button class="ml-5" style="float: right" type="is-secondary" @click="closeModal">Cancel
+                    </b-button>
                   </b-col>
 
                 </b-row>
@@ -191,17 +194,18 @@ export default {
       selected: new Date(),
       showWeekNumber: false,
       locale: undefined,
-      is_create_staff_modal_active: false,
+      is_update_staff_modal_active: false,
       is_btn_loading: false,
       form: {
+        _id:'',
         first_name: '',
         last_name: '',
         mobile: '',
         gender: '',
         email: '',
         password: '',
-        role: '',
-        DOB:'',
+        account_type: '',
+        DOB: '',
         is_email_verified: false,
         is_phone_verified: false
       }
@@ -209,28 +213,29 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.is_create_staff_modal_active = !this.is_create_staff_modal_active
+    openModal(data) {
+      this.form = data
+      this.is_update_staff_modal_active = !this.is_update_staff_modal_active
     },
 
-    async createStaff() {
+    async updateStaff() {
       try {
         this.is_btn_loading = true
-        if (await this.$refs.createStaffValidation.validate()) {
-          await staff_apis.createStaff(this.form)
-          this.success('Staff Create Successfully')
+        if (await this.$refs.updateStaffValidation.validate()) {
+          await staff_apis.updateStaff(this.form._id,this.form)
+          this.success('Staff Update Successfully')
           this.closeModal()
         }
       } catch (e) {
         this.danger('User email is already exists')
       }
-      this.is_btn_loading=false
+      this.is_btn_loading = false
     },
 
     closeModal() {
       this.$parent.closeModel()
-      this.form={}
-      this.is_create_staff_modal_active = !this.is_create_staff_modal_active
+      this.form = {}
+      this.is_update_staff_modal_active = !this.is_update_staff_modal_active
     }
   }
 }
