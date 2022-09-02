@@ -10,6 +10,7 @@ export default {
     success(message) {
       this.$buefy.toast.open({
         message: `${message}`,
+        duration: 5000,
         type: 'is-success'
       })
     },
