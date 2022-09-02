@@ -69,6 +69,8 @@
 
       <b-table-column field="action" label="Edit">
         <template v-slot="props">
+          <b-tooltip label="Edit"
+                     position="is-right" target="">
           <b-button outlined style="border: hidden" @click="editStaff(props.row)">
             <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16"
                  width="16" xmlns="http://www.w3.org/2000/svg">
@@ -78,11 +80,14 @@
                     fill-rule="evenodd"/>
             </svg>
           </b-button>
+          </b-tooltip>
         </template>
       </b-table-column>
 
       <b-table-column field="action" label="Delete">
         <template v-slot="props">
+          <b-tooltip label="Delete"
+                     position="is-right" target="">
           <b-button outlined style="border: hidden" @click="deleteStaff(props.row)">
             <svg class="bi bi-trash-fill" fill="red" height="16" viewBox="0 0 16 16" width="16"
                  xmlns="http://www.w3.org/2000/svg">
@@ -90,6 +95,7 @@
                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
             </svg>
           </b-button>
+          </b-tooltip>
         </template>
       </b-table-column>
 
