@@ -227,6 +227,7 @@ export default {
 
     closeModal() {
       this.$parent.closeModel()
+      this.form={}
       this.is_create_staff_modal_active = !this.is_create_staff_modal_active
     }
   }
