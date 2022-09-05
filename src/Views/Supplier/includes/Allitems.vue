@@ -15,55 +15,75 @@
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.id }}
+            {{ props.row.item_code }}
           </template>
         </b-table-column>
-        <b-table-column field="full_name" label="Full Name">
+        <b-table-column field="name" label="Item Name">
           <template v-slot:header="{ column }">
             <b-tooltip :label="column.label" append-to-body dashed>
               {{ column.label }}
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.first_name }} {{ props.row.last_name }}
+            {{ props.row.name }}
           </template>
         </b-table-column>
-        <b-table-column field="email" label="Email">
+        <b-table-column field="qty" label="Qty">
           <template v-slot:header="{ column }">
             <b-tooltip :label="column.label" append-to-body dashed>
               {{ column.label }}
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.email }}
+            {{ props.row.qty }}
           </template>
         </b-table-column>
-        <b-table-column field="DOB" label="DOB">
+        <b-table-column field="brand" label="Brand">
           <template v-slot:header="{ column }">
             <b-tooltip :label="column.label" append-to-body dashed>
               {{ column.label }}
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.DOB }}
+            {{ props.row.brand }}
           </template>
         </b-table-column>
-        <b-table-column field="mobile" label="Mobile">
+        <b-table-column field="price" label="Price(LKR)">
           <template v-slot:header="{ column }">
             <b-tooltip :label="column.label" append-to-body dashed>
               {{ column.label }}
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.mobile }}
+            {{ props.row.price }}
           </template>
         </b-table-column>
-  
+        <b-table-column field="created_at" label="Created At">
+          <template v-slot:header="{ column }">
+            <b-tooltip :label="column.label" append-to-body dashed>
+              {{ column.label }}
+            </b-tooltip>
+          </template>
+          <template v-slot="props">
+            {{ props.row.created_at }}
+          </template>
+        </b-table-column>
+        <b-table-column field="enabled" label="Active Status">
+          <template v-slot:header="{ column }">
+            <b-tooltip :label="column.label" append-to-body dashed>
+              {{ column.label }}
+            </b-tooltip>
+          </template>
+          <template v-slot="props">
+            {{ props.row.enabled }}
+          </template>
+        </b-table-column>
+
         <b-table-column field="action" label="Edit">
           <template v-slot="props">
             <b-tooltip label="Edit"
                        position="is-right" target="">
-              <b-button outlined style="border: hidden" @click="editStaff(props.row)">
+              <b-button outlined style="border: hidden">
                 <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16"
                      width="16" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -93,82 +113,75 @@
         </b-table-column>
   
       </b-table>
-      <create_staff ref="create_staff" @getAllStaff="getAllStaff"/>
-      <edit_staff ref="edit_staff" @getAllStaff="getAllStaff"/>
-      <!--    <createNotice ref="create_form"/>-->
-      <!--    <editeNotice ref="edit_form"/>-->
+      <create_item ref="create_item" @getAllItems="getAllItems"/>
+      <!-- <edit_item ref="edit_item" @getAllItems="getAllItems"/> -->
     </div>
   </template>
   
   <script>
-  import staffApis from '../../../../apis/modules/admin_pais/staff_apis'
-  import ToastMixin from "../../../../mixins/ToastMixin";
-  import staff_apis from "../../../../apis/modules/admin_pais/staff_apis";
+  import SupplierApis from '../../../apis/modules/supplier_apis/supplier_apis';
+  import create_item from "./create_item";
+  import ToastMixin from "../../../mixins/ToastMixin";
   
   export default {
     name: "index",
     mixins:[ToastMixin],
     components: {
-      create_staff,
-      edit_staff
+      create_item
     },
     data() {
       return {
-        selected_role: undefined,
         fields: [
           {
-            field: 'id',
-            label: 'ID',
-            width: '40',
-            numeric: true
+            field: 'item_code',
+            label: 'Item Code',
+            width: '40'
           },
           {
-            field: 'full_name',
-            label: 'Full Name',
+            field: 'name',
+            label: 'Item Name',
           },
           {
-            field: 'email',
-            label: 'Email',
+            field: 'qty',
+            label: 'Qty',
           },
           {
-            field: 'DOB',
-            label: 'Date OF Birth',
+            field: 'brand',
+            label: 'Brand',
           },
           {
-            field: 'mobile',
-            label: 'Mobile',
+            field: 'price',
+            label: 'Price',
           },
           {
-            field: 'role',
-            label: 'Role',
+            field: 'enabled',
+            label: 'Enabled',
+          },
+          {
+            field: 'created_at',
+            label: 'Created At',
           },
         ],
-        staff: [],
+        item: [],
         is_table_loading: false
       }
     },
-    watch: {
-      selected_role() {
-        this.getAllStaff(this.selected_role)
-      }
-    },
+
     methods: {
-      async getAllStaff(selected_role) {
+      async getAllItems() {
         try {
           this.is_table_loading = true
-          let respond = (await staffApis.getAllStaff(selected_role)).data.data.users
-          this.staff = respond.map((e, index) => ({
+          let respond = (await SupplierApis.getAllItems()).data.data.items
+          this.item = respond.map((e, index) => ({
             id: index + 1,
             _id:e._id,
-            first_name: e.first_name,
-            last_name: e.last_name,
-            email: e.email,
-            DOB: new Date(e.DOB),
-            mobile: e.mobile,
-            account_type: e.account_type,
-            gender: e.gender,
-            is_email_verified: e.is_email_verified,
-            is_phone_verified: e.is_phone_verified
+            item_code: e.item_code,
+            name: e.name,
+            qty: e.qty,
+            price: e.price,
+            brand: e.brand,
+            enabled: e.enabled,
+            created_at: e.created_at
           }))
         } catch (e) {
   
@@ -177,12 +190,12 @@
       },
   
       closeModel() {
-        this.getAllStaff(this.selected_role)
+        this.getAllItems()
       },
   
-      editStaff(data) {
+      editItem(data) {
         try {
-          this.$refs.edit_staff.openModal(data)
+          this.$refs.edit_item.openModal(data)
         } catch (e) {
   
         }
@@ -190,20 +203,20 @@
   
       confirmCustomDelete(data) {
         this.$buefy.dialog.confirm({
-          title: 'Deleting account',
-          message: 'Are you sure you want to <b>delete</b> your account? This action cannot be undone.',
-          confirmText: 'Delete Account',
+          title: 'Deleting Item',
+          message: 'Are you sure you want to <b>Delete</b> this item? This action cannot be undone.',
+          confirmText: 'Delete Item',
           type: 'is-danger',
           hasIcon: true,
-          onConfirm: () => this.deleteStaff(data)
+          onConfirm: () => this.deleteItem(data)
         })
       },
-     async deleteStaff(data) {
+     async deleteItem(data) {
           try{
   
-            await staff_apis.deleteStaff(data._id)
-            this.success('Staff Update Successfully')
-            await this.getAllStaff(this.selected_role)
+            await SupplierApis.deleteItem(data._id)
+            this.success('Item Deleted Successfully')
+            await this.getAllItems()
           }catch (e) {
             this.$buefy.toast.open(e.message)
           }
@@ -211,7 +224,7 @@
     },
   
     async mounted() {
-      await this.getAllStaff(this.selected_role)
+      await this.getAllItems()
     }
   }
   </script>

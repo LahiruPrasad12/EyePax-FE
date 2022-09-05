@@ -2,10 +2,8 @@
   <b-navbar class="container is-max-desktop mb-5">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img
-          src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-          alt="Lightweight UI components for Vue.js based on Bulma"
-        >
+        <div style="font-weight:800; font-size:35px">EyePax</div>
+        <br style="font-size:5px"/>Technologies
       </b-navbar-item>
     </template>
     <template #start>
