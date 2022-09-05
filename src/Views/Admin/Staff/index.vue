@@ -32,7 +32,7 @@
               </b-tab-item>
 
               <b-tab-item label="Role Management">
-                <AllStaff/>
+                
               </b-tab-item>
             </b-tabs>
           </div>
