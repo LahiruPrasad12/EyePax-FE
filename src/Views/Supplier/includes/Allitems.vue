@@ -1,5 +1,4 @@
 <template>
-
     <div class="container">
       <b-table
         ref="itemTable"
@@ -75,7 +74,7 @@
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.enabled }}
+            {{ props.row.enabled?"Enabled":"Disabled" }}
           </template>
         </b-table-column>
 
@@ -83,7 +82,7 @@
           <template v-slot="props">
             <b-tooltip label="Edit"
                        position="is-right" target="">
-              <b-button outlined style="border: hidden">
+              <b-button outlined style="border: hidden" @click="editItem(props.row)">
                 <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16"
                      width="16" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -114,20 +113,22 @@
   
       </b-table>
       <create_item ref="create_item" @getAllItems="getAllItems"/>
-      <!-- <edit_item ref="edit_item" @getAllItems="getAllItems"/> -->
+      <edit_item ref="edit_item" @getAllItems="getAllItems"/>
     </div>
   </template>
   
   <script>
   import SupplierApis from '../../../apis/modules/supplier_apis/supplier_apis';
   import create_item from "./create_item";
+  import edit_item from "./edit_item";
   import ToastMixin from "../../../mixins/ToastMixin";
   
   export default {
     name: "index",
     mixins:[ToastMixin],
     components: {
-      create_item
+      create_item,
+      edit_item
     },
     data() {
       return {
@@ -178,6 +179,7 @@
             item_code: e.item_code,
             name: e.name,
             qty: e.qty,
+            description: e.description,
             price: e.price,
             brand: e.brand,
             enabled: e.enabled,

@@ -5,8 +5,12 @@
       <header class="card-header">
         <div class="card-header-title">
             <div class="card-header-title">
-             <div style="font-size: 20px;"> Items</div>
+             <div style="font-size: 25px;"> Items</div>
+             <b-input 
+                placeholder="Search Items" type="text" style="margin-left:10%; width:75%; box-shadow: 2px 2px 2px #808080;">
+            </b-input>
             </div>
+            
           <div class="float-end">
             <b-button  type="is-success" @click="createItem">Add Item</b-button>
             <b-button  type="is-info" >Generate Report</b-button>

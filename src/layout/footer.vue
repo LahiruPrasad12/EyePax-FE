@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" style="margin-top: 5%">
+  <footer class="footer" style="margin-top: 4%">
     <div class="content has-text-centered">
       <p>
         © 2022. EyePax Technologies. All Rights Reserved.
