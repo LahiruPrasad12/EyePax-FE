@@ -19,20 +19,8 @@
    </div>
    <div class="main-blog__time">7 min</div>
   </div>
-  <div class="main-blog anim" style="--delay: .2s">
-     <div class="main-blog__title">Skateboard Tips You need to know</div>
-     <div class="main-blog__author tips">
-      <div class="main-blog__time">7 min</div>
-      <div class="author-img__wrapper">
-       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
-        <path d="M20 6L9 17l-5-5" />
-       </svg>
-       <img class="author-img" src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fG1lbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-      </div>
-      <div class="author-detail">
-       <div class="author-name">Tony Andrew</div>
-       <div class="author-info">53K views <span></span>2 weeks ago</div>
- </div></div></div></div>
+  
+ </div>
  <div class="small-header anim" style="--delay: .3s">Most Watched</div>
  <div class="videos">
   <div class="video anim" style="--delay: .4s">
@@ -259,17 +247,12 @@
 </div>
 </div>
 </template>
-
+<style>
+  @import '../../test.css';
+</style>
 <script>
 export default {
-  name: "admin_home",
-  data(){
-    return{
-      total_staff:0,
-      total_shipping:0,
-
-    }
-  }
+  name: "new"
 }
 </script>
 

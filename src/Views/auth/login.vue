@@ -1,6 +1,10 @@
 <template>
-  <div class="container is-max-desktop">
-    <form class="box">
+  <div>
+  
+  <div class="main-container" style="width: 1000px;">
+    <form class="box" style="background-color: rgba(21, 20, 26, 0.63); border-radius: 20px">
+      <h1 style="text-align:center; font-size: 25px; color: white; margin-top: 2%; font-weight: 400;">Already registered? Sign in here</h1>
+      <br/>
       <validation-observer ref="loginValidation">
       <div class="field">
         <validation-provider
@@ -8,7 +12,7 @@
           name="Email"
           rules="required|emailTest"
         >
-        <label class="label">Email</label>
+        <label class="label" style="color: #808191;">Email</label>
         <div class="control">
           <input v-model="form.email" class="input" placeholder="e.g. alex@example.com" type="email">
         </div>
@@ -17,18 +21,20 @@
       </div>
 
       <div class="field">
-        <label class="label">Password</label>
+        <label class="label" style="color: #808191;">Password</label>
         <div class="control">
           <input v-model="form.password" class="input" placeholder="********" type="password">
         </div>
       </div>
-        <button :disabled="is_btn_loading" class="button is-primary" @click="signIN">
+      <br/>
+        <button :disabled="is_btn_loading" class="button is-primary" @click="signIN" style="margin-bottom: 2%">
           {{ is_btn_loading ? 'Signing....' : 'Sign in' }}
         </button>
       </validation-observer>
     </form>
   </div>
 
+</div>
 </template>
 
 <script>
