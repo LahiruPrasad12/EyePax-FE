@@ -1,7 +1,7 @@
 <template>
   <section>
     <b-modal
-      v-model="is_create_item_modal_active"
+      v-model="is_update_item_modal_active"
       :destroy-on-hide="false"
       aria-label="Example Modal"
       aria-modal
@@ -11,24 +11,23 @@
       trap-focus>
       <div class="card">
         <header class="card-header" style="font-weight:700">
-          Add New Item
+          Update Item Details
         </header>
         <div class="card-content">
           <template>
             <section>
-              <validation-observer ref="createItemValidation">
+              <validation-observer ref="updateItemValidation">
                 <b-row>
                   <b-col md="6">
                     <validation-provider
                       #default="{ errors }"
                       name="item_code"
-                      rules="required"
                     >
                       <b-field :message="errors[0]"
                                :type="errors[0]?'is-danger':'is-success'"
-                               label="*Item Code">
+                               label="Item Code">
                         <b-input v-model="form.item_code"
-                                 maxlength="10" placeholder="e.g. EP-XXXX" type="text">
+                                 maxlength="10" placeholder="e.g. EP-XXXX" type="text" value="disabled" disabled>
                         </b-input>
                       </b-field>
                     </validation-provider>
@@ -41,9 +40,9 @@
                     >
                       <b-field :message="errors[0]"
                                :type="errors[0]?'is-danger':'is-success'"
-                               label="*Item Name">
+                               label="Item Name">
                         <b-input v-model="form.name"
-                                 maxlength="50" placeholder="e.g. Desktop Computer" type="text">
+                                  maxlength="50" placeholder="e.g. Desktop Computer" type="text">
                         </b-input>
                       </b-field>
                     </validation-provider>
@@ -56,9 +55,9 @@
                     >
                       <b-field :message="errors[0]"
                                :type="errors[0]?'is-danger':'is-success'"
-                               label="*Qty">
+                               label="Qty">
                         <b-input v-model="form.qty"
-                                 maxlength="10" placeholder="e.g. 12" type="number">
+                                  maxlength="10" placeholder="e.g. 12" type="number">
                         </b-input>
                       </b-field>
                     </validation-provider>
@@ -71,9 +70,9 @@
                     >
                       <b-field :message="errors[0]"
                                :type="errors[0]?'is-danger':'is-success'"
-                               label="*Brand">
+                               label="Brand">
                         <b-input v-model="form.brand"
-                                 maxlength="30" placeholder="e.g. MSI/Azus" type="text">
+                                  maxlength="30" placeholder="e.g. MSI/Azus" type="text">
                         </b-input>
                       </b-field>
                     </validation-provider>
@@ -99,12 +98,11 @@
                       name="price"
                       rules="required"
                     >
-                      <b-field
-                        :message="errors[0]"
-                        :type="errors[0]?'is-danger':'is-success'"
-                        label="*Price (LKR)">
+                      <b-field :message="errors[0]"
+                               :type="errors[0]?'is-danger':'is-success'"
+                               label="Price (LKR))">
                         <b-input v-model="form.price"
-                                placeholder="e.g. 10,000LKR" type="number" >
+                                  placeholder="e.g. 10,000LKR" type="number">
                         </b-input>
                       </b-field>
                     </validation-provider>
@@ -115,18 +113,22 @@
                       name="enabled"
                     >
                       <b-field :message="errors[0]"
-                               :type="errors[0]?'is-danger':'is-success'"
-                               label="Availabitlity"
+                               :type="errors[0]?'is-danger':''"
+                               label="Availability"
                       >
-                        <b-checkbox v-model="form.enabled">Enabled</b-checkbox>
+                            <b-checkbox v-model="form.enabled">Enabled</b-checkbox>
                       </b-field>
+
                     </validation-provider>
                   </b-col>
-
                   <b-col class="mt-5" md="12">
-                    <b-button :disabled="is_btn_loading" :loading="is_btn_loading" class="ml-5" style="float: right" type="is-info" @click="createItem">Add</b-button>
-                    <b-button class="ml-5" style="float: right" type="is-secondary" @click="closeModal">Cancel</b-button>
+                    <b-button :disabled="is_btn_loading" :loading="is_btn_loading" class="ml-5" style="float: right"
+                              type="is-info" @click="updateItem">Update
+                    </b-button>
+                    <b-button class="ml-5" style="float: right" type="is-secondary" @click="closeModal">Cancel
+                    </b-button>
                   </b-col>
+
                 </b-row>
               </validation-observer>
             </section>
@@ -152,14 +154,15 @@ export default {
       selected: new Date(),
       showWeekNumber: false,
       locale: undefined,
-      is_create_item_modal_active: false,
+      is_update_item_modal_active: false,
       is_btn_loading: false,
       form: {
+        _id:'',
         item_code: '',
         name: '',
         qty: '',
-        price: '',
         brand: '',
+        price: '',
         description: '',
         enabled: ''
       }
@@ -167,29 +170,30 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.is_create_item_modal_active = !this.is_create_item_modal_active
+    openModal(data) {
+      this.form = data
+      this.is_update_item_modal_active = !this.is_update_item_modal_active
     },
 
-    async createItem() {
+    async updateItem() {
       try {
         this.is_btn_loading = true
         this.form.price = (this.form.price*1).toFixed(2)
-        if (await this.$refs.createItemValidation.validate()) {
-          await SupplierApis.createItem(this.form)
-          this.success('Item Added Successfully')
+        if (await this.$refs.updateItemValidation.validate()) {
+          await SupplierApis.updateItem(this.form._id,this.form)
+          this.success('Item Update Successfully')
           this.closeModal()
         }
       } catch (e) {
-        this.danger('This Item is Already Exists')
+        this.danger('Item Updated Failed!')
       }
-      this.is_btn_loading=false
+      this.is_btn_loading = false
     },
 
     closeModal() {
       this.$parent.closeModel()
-      this.form={}
-      this.is_create_item_modal_active = !this.is_create_item_modal_active
+      this.form = {}
+      this.is_update_item_modal_active = !this.is_update_item_modal_active
     }
   }
 }
