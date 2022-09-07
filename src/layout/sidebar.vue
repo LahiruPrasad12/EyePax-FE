@@ -67,6 +67,12 @@
     </a>
    </div>
   </div>
+
+  <button class="sidebar-link" style="background-color:#1f1d2b; border-radius: 40px; border-color: rgb(192, 192, 192);; color: rgb(192, 192, 192);" type="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="background-color: #1f1d2b;"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+  Logout
+  </button>
+
  </div>
   </template>
   <style>

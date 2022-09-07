@@ -59,7 +59,7 @@ body:before {
   max-height: 900px;
   height: 95vh;
   display: flex;
-  overflow: hidden;
+  overflow: auto;
   width: 100%;
   border-radius: 20px;
   font-size: 15px;
@@ -307,6 +307,7 @@ body:before {
 .anim {
   -webkit-animation: bottom 0.8s var(--delay) both;
           animation: bottom 0.8s var(--delay) both;
+          
 }
 
 .main-header {

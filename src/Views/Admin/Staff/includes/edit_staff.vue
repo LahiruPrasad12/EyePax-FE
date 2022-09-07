@@ -92,6 +92,7 @@
                           <option value="" style="color: rgb(180, 180, 180);">Select a role</option>
                           <option value="staff" style="color: rgb(180, 180, 180);">Staff</option>
                           <option value="admin" style="color: rgb(180, 180, 180);">Admin</option>
+                          <option value="supplier" style="color: rgb(180, 180, 180);">Supplier</option>
                           <option value="stock-manager" style="color: rgb(180, 180, 180);">Stock Manager</option>
                         </b-select>
                       </b-field>
