@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <div class="container">
-      <Sidebar/>
+      <div v-if="currentUser != null">
+        <Sidebar/>
+      </div>
+
       <div class="wrapper">
         <div class="header">
           <!-- <div class="search-bar">
@@ -18,7 +21,7 @@
         </div>
 
         <router-view/>
-        
+
       </div>
     </div>
   </div>
