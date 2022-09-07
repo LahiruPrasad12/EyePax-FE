@@ -1,7 +1,7 @@
 <template>
   <div class="">
 <div class="main-container">
- <div class="main-header anim" style="--delay: 0s">Discover</div>
+ <div class="main-header anim" style="--delay: 0s">Overview</div>
  <div class="main-blogs">
   <div class="main-blog anim" style="--delay: .1s">
    <div class="main-blog__title">How to do Basic Jumping and how to landing safely</div>
@@ -33,7 +33,7 @@
        <div class="author-name">Tony Andrew</div>
        <div class="author-info">53K views <span></span>2 weeks ago</div>
  </div></div></div></div>
- <div class="small-header anim" style="--delay: .3s">Most Watched</div>
+ <div class="small-header anim" style="--delay: .3s">Analytics</div>
  <div class="videos">
   <div class="video anim" style="--delay: .4s">
    <div class="video-time">8 min</div>

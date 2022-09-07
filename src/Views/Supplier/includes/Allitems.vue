@@ -206,7 +206,7 @@
       confirmCustomDelete(data) {
         this.$buefy.dialog.confirm({
           title: 'Deleting Item',
-          message: 'Are you sure you want to <b>Delete</b> this item? This action cannot be undone.',
+          message: 'Are you sure you want to <b style="color:white;">Delete</b> this item? This action cannot be undone.',
           confirmText: 'Delete Item',
           type: 'is-danger',
           hasIcon: true,

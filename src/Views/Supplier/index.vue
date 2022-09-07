@@ -6,12 +6,11 @@
       <header class="card-header" style="background-color: rgba(21, 20, 26, 0.63); border-radius: 20px">
         <div class="card-header-title">
             <div class="card-header-title">
-             <div style="font-size: 25px; color: white;"> Items</div>
+             <div style="font-size: 25px; color: white;">Items</div>
             <div class="search-bar">
-              <input type="text" placeholder="Search" style="margin-left:15%;"> 
+              <input type="text" placeholder="Search Items" style="margin-left:15%;"> 
             </div>
-            </div>
-            
+            </div>     
           <div class="float-end">
             <b-button  type="is-success" @click="createItem">Add Item</b-button>
             <b-button  type="is-info" >Generate Report</b-button>

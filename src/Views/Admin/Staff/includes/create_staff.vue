@@ -10,8 +10,8 @@
       has-modal-card
       trap-focus>
       <div class="card">
-        <header class="card-header">
-          Create New Staff
+        <header class="card-header" style="font-weight:700; font-size: 20px; color: white;">
+          Add New User
         </header>
         <div class="card-content">
           <template>
@@ -88,12 +88,11 @@
                         :message="errors[0]"
                         :type="errors[0]?'is-danger':''"
                         label="Role">
-                        <b-select v-model="form.role" placeholder="Select a character">
-                          <option value="">None</option>
-                          <option value="staff">Staff</option>
-                          <option value="admin">admin</option>
-                          <option value="supplier">supplier</option>
-                          <option value="stock-manager">Stock Manager</option>
+                        <b-select v-model="form.role" placeholder="Select a role">
+                          <option value="" style="color: rgb(180, 180, 180);">Select a role</option>
+                          <option value="staff" style="color: rgb(180, 180, 180);">Staff</option>
+                          <option value="admin" style="color: rgb(180, 180, 180);">Admin</option>
+                          <option value="stock-manager" style="color: rgb(180, 180, 180);">Stock Manager</option>
                         </b-select>
                       </b-field>
                     </validation-provider>
@@ -108,44 +107,34 @@
                         :message="errors[0]"
                         :type="errors[0]?'is-danger':''"
                         label="DOB">
-                        <b-datepicker
-                          v-model="form.DOB"
-                          :show-week-number="showWeekNumber"
-                          locale="locale"
-                          placeholder="Click to select..."
-                          icon="calendar-today"
-                          :icon-right="selected ? 'close-circle' : ''"
-                          icon-right-clickable
-                          open-on-focus
-                          append-to-body
-                          close-on-click
-                          trap-focus>
-                        </b-datepicker>
+                        <b-input v-model="form.DOB"
+                                 type="date">
+                        </b-input>
                       </b-field>
                     </validation-provider>
                   </b-col>
-                  <b-col md="3">
+                  <b-col md="2">
                     <validation-provider
                       #default="{ errors }"
                       name="Gender"
                       rules="required"
                     >
-                      <b-field label="Material">
+                      <b-field label="Gender">
                         <b-radio v-model="form.gender"
                                  native-value="male">
-                          male
+                          Male
                         </b-radio>
                       </b-field>
                       <b-field>
                         <b-radio v-model="form.gender"
                                  native-value="female"
                                  type="is-info">
-                          female
+                          Female
                         </b-radio>
                       </b-field>
                     </validation-provider>
                   </b-col>
-                  <b-col md="3">
+                  <b-col md="4">
                     <validation-provider
                       #default="{ errors }"
                       name="Conditions"

@@ -11,7 +11,7 @@
       trap-focus>
       <div class="card">
         <header class="card-header" style="font-weight:700; font-size: 20px; color: white;">
-          Update Item Details
+          Update &nbsp;{{form.item_code}}'s' &nbsp;Details
         </header>
         <div class="card-content">
           <template>
