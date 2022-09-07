@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-modal
+    <b-modal 
       v-model="is_create_item_modal_active"
       :destroy-on-hide="false"
       aria-label="Example Modal"
@@ -10,12 +10,12 @@
       has-modal-card
       trap-focus>
       <div class="card">
-        <header class="card-header" style="font-weight:700">
+        <header class="card-header" style="font-weight:700; font-size: 20px; color: white;">
           Add New Item
         </header>
         <div class="card-content">
           <template>
-            <section>
+            <section style="color: white;">
               <validation-observer ref="createItemValidation">
                 <b-row>
                   <b-col md="6">
@@ -88,7 +88,7 @@
                         :type="errors[0]?'is-danger':'is-success'"
                         label="Description">
                         <b-textarea v-model="form.description"
-                                 maxlength="1000" placeholder="e.g. Lorem Ipsum is simply dummy text of the printing and typesetting industry...." type="text">
+                                 maxlength="1000" placeholder="e.g. Lorem Ipsum is simply dummy text of the printing and typesetting industry...." type="text" style="height:100px; background-color: #1f1d2b; color: rgb(180, 180, 180); border-color: #424050;">
                         </b-textarea>
                       </b-field>
                     </validation-provider>
@@ -104,7 +104,7 @@
                         :type="errors[0]?'is-danger':'is-success'"
                         label="*Price (LKR)">
                         <b-input v-model="form.price"
-                                placeholder="e.g. 10,000LKR" type="number">
+                                placeholder="e.g. 10,000LKR" type="number" >
                         </b-input>
                       </b-field>
                     </validation-provider>
@@ -161,7 +161,7 @@ export default {
         price: '',
         brand: '',
         description: '',
-        enabled: ''
+        enabled: 'false'
       }
     }
   },
@@ -174,13 +174,14 @@ export default {
     async createItem() {
       try {
         this.is_btn_loading = true
+        this.form.price = (this.form.price*1).toFixed(2)
         if (await this.$refs.createItemValidation.validate()) {
           await SupplierApis.createItem(this.form)
-          this.success('Item added successfully')
+          this.success('Item Added Successfully')
           this.closeModal()
         }
       } catch (e) {
-        this.danger('This item is already exists')
+        this.danger('This Item is Already Exists')
       }
       this.is_btn_loading=false
     },

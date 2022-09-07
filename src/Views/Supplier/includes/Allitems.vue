@@ -1,7 +1,6 @@
 <template>
-
-    <div class="container">
-      <b-table
+    <div >
+      <b-table 
         ref="itemTable"
         :data="item"
         :loading="is_table_loading"
@@ -75,7 +74,7 @@
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.enabled }}
+            {{ props.row.enabled?"Enabled":"Disabled" }}
           </template>
         </b-table-column>
 
@@ -83,8 +82,8 @@
           <template v-slot="props">
             <b-tooltip label="Edit"
                        position="is-right" target="">
-              <b-button outlined style="border: hidden">
-                <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16"
+              <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="editItem(props.row)">
+                <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16" style="color: #ff7551"
                      width="16" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -101,8 +100,8 @@
           <template v-slot="props">
             <b-tooltip label="Delete"
                        position="is-right" target="">
-              <b-button outlined style="border: hidden" @click="confirmCustomDelete(props.row)">
-                <svg class="bi bi-trash-fill" fill="red" height="16" viewBox="0 0 16 16" width="16"
+              <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="confirmCustomDelete(props.row)">
+                <svg class="bi bi-trash-fill" fill="red" height="16" viewBox="0 0 16 16" width="16" style="color: rgb(252, 72, 72)"
                      xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
@@ -114,20 +113,22 @@
   
       </b-table>
       <create_item ref="create_item" @getAllItems="getAllItems"/>
-      <!-- <edit_item ref="edit_item" @getAllItems="getAllItems"/> -->
+      <edit_item ref="edit_item" @getAllItems="getAllItems"/>
     </div>
   </template>
   
   <script>
   import SupplierApis from '../../../apis/modules/supplier_apis/supplier_apis';
   import create_item from "./create_item";
+  import edit_item from "./edit_item";
   import ToastMixin from "../../../mixins/ToastMixin";
   
   export default {
     name: "index",
     mixins:[ToastMixin],
     components: {
-      create_item
+      create_item,
+      edit_item
     },
     data() {
       return {
@@ -178,6 +179,7 @@
             item_code: e.item_code,
             name: e.name,
             qty: e.qty,
+            description: e.description,
             price: e.price,
             brand: e.brand,
             enabled: e.enabled,
@@ -204,7 +206,7 @@
       confirmCustomDelete(data) {
         this.$buefy.dialog.confirm({
           title: 'Deleting Item',
-          message: 'Are you sure you want to <b>Delete</b> this item? This action cannot be undone.',
+          message: 'Are you sure you want to <b style="color:white;">Delete</b> this item? This action cannot be undone.',
           confirmText: 'Delete Item',
           type: 'is-danger',
           hasIcon: true,

@@ -3,7 +3,6 @@
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
         <div style="font-weight:800; font-size:35px">EyePax</div>
-        <br style="font-size:5px"/>Technologies
       </b-navbar-item>
     </template>
     <template #start>

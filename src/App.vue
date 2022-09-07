@@ -1,23 +1,39 @@
 <template>
   <div id="app">
-    <Header/>
-    <AdminSideNav/>
-    <router-view/>
-    <Footer/>
+<div class="container">
+<Sidebar/>
+ <div class="wrapper">
+  <div class="header">
+   <!-- <div class="search-bar">
+    <input type="text" placeholder="Search">
+   </div> -->
+   <div class="user-settings">
+    <img class="user-img" src="https://i.postimg.cc/Hs8Kgb73/ezgif-com-gif-maker.gif" alt="">
+    <div class="user-name">Admin</div>
+   </div>
   </div>
+
+ 
+  <router-view/>
+
+
+ </div>
+</div>
+  </div>
+  
 </template>
 
 <script>
-import Footer from "./layout/footer";
-import Header from "./layout/header";
-import AdminSideNav from "./layout/admin-side-nav";
+import Sidebar from "./layout/sidebar";
+import New from "./layout/new";
 export default {
   name: 'App',
-  components: {Header, Footer,AdminSideNav}
+  components: {Sidebar,New}
 }
 </script>
 
 <style>
+@import './layout/test.css';
 /*#app {*/
 /*  font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
 /*  -webkit-font-smoothing: antialiased;*/
