@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-table ref="itemTable" :data="orders" :loading="is_table_loading" hover responsive>
-            <b-table-column field="order_id" label="Order Id">
+            <b-table-column field="order_id" label="Order ID">
                 <template v-slot:header="{ column }">
                     <b-tooltip :label="column.label" append-to-body dashed>
                         {{ column.label }}
@@ -106,7 +106,7 @@ export default {
             fields: [
                 {
                     field: 'order_id',
-                    label: 'Order Id',
+                    label: 'Order ID',
                     width: '40'
                 },
                 {
@@ -166,7 +166,7 @@ export default {
         confirmCustomDelete(data) {
             this.$buefy.dialog.confirm({
                 title: 'Deleting Item',
-                message: 'Are you sure you want to <b>Delete</b> this item? This action cannot be undone.',
+                message: 'Are you sure you want to <b style="color:white;">Delete</b> this item? This action cannot be undone.',
                 confirmText: 'Delete Item',
                 type: 'is-danger',
                 hasIcon: true,

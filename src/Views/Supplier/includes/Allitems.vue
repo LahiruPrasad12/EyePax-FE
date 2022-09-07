@@ -183,7 +183,7 @@
             price: e.price,
             brand: e.brand,
             enabled: e.enabled,
-            created_at: e.created_at
+            created_at: e.created_at.substring(0, 10)
           }))
         } catch (e) {
   
