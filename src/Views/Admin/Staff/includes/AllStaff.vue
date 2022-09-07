@@ -165,7 +165,7 @@ export default {
           first_name: e.first_name,
           last_name: e.last_name,
           email: e.email,
-          DOB: e.DOB,
+          DOB: e.DOB.substring(0, 10),
           mobile: e.mobile,
           account_type: e.account_type,
           gender: e.gender,

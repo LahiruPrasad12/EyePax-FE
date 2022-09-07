@@ -1229,3 +1229,30 @@ input[type="email"]::-webkit-input-placeholder {
   padding: 0.5em 0.75em;
   vertical-align: top;
 }
+
+.vs__dropdown-toggle {
+  appearance: none;
+  display: flex;
+  padding: 0 0 4px 0;
+  background: #1f1d2b;
+  border-color: #424050;
+  border-radius: 4px;
+}
+
+.vs__dropdown-menu {
+  background: #1f1d2b;
+}
+
+.vs__selected {
+  display: flex;
+  align-items: center;
+  background-color: var(--vs-selected-bg);
+  border: var(--vs-selected-border-width) var(--vs-selected-border-style)
+      var(--vs-selected-border-color);
+  border-radius: var(--vs-border-radius);
+  color: rgb(180, 180, 180);
+  line-height: var(--vs-line-height);
+  margin: 4px 2px 0px 2px;
+  padding: 0 0.25em;
+  z-index: 0;
+}

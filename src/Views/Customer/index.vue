@@ -9,7 +9,7 @@
                     <div class="card-header-title">
                         <div style="font-size: 25px; color: white;"> Orders</div>
                         <div class="search-bar">
-                            <input type="text" placeholder="Search Items" style="margin-left:15%;">
+                            <input type="text" placeholder="Search Orders" style="margin-left:15%;">
                         </div>
                     </div>
                     <div class="float-end">
