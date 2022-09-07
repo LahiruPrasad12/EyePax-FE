@@ -29,11 +29,22 @@ export default  new Vuex.Store({
       }
       let respond = (await authAPI.login(payload)).data
       localStorage.setItem("JWT", respond.token);
-      console.log(respond.data.user)
       commit('SET_CURRENT_USER',respond.data.user)
       if(respond.data.user.account_type === 'admin'){
         await router.replace('/admin/home')
+      }else if(respond.data.user.account_type === 'supplier'){
+        await router.replace('/supplier/home')
       }
-    }
+    },
+
+    async autoLogin({ commit }){
+      let respond = (await authAPI.autologin()).data.data
+      commit('SET_CURRENT_USER',respond)
+      if(respond.data.user.account_type === 'admin'){
+        await router.replace('/admin/home')
+      }else if(respond.data.user.account_type === 'supplier'){
+        await router.replace('/supplier/home')
+      }
+    },
   }
 })

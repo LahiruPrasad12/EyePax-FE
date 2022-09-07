@@ -1,5 +1,6 @@
 <template>
   <div class="container" style="margin-top: 2%">
+
     <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem; height: 10px">
       <a class="d-block p-3 link-dark text-decoration-none" data-bs-original-title="Icon-only" data-bs-placement="right" data-bs-toggle="tooltip"
          href="/" title="">
@@ -15,7 +16,7 @@
                    type="is-dark"
                    position="is-left" target="">
           <li class="nav-item mb-3">
-            <a aria-current="page" class="nav-link active py-3 border-bottom" data-bs-original-title="Home" data-bs-placement="right" data-bs-toggle="tooltip"
+            <a aria-current="page" class= "nav-link py-3 border-bottom" :class="{ active: this.$router.currentRoute.path.split('/').pop() === 'staff' }" data-bs-original-title="Home" data-bs-placement="right" data-bs-toggle="tooltip"
                href="/#/admin/home" title="">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
                 <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
@@ -83,8 +84,23 @@
 
 <script>
 export default {
-  name: "admin-side-nav"
+  name: "admin-side-nav",
+
+  data(){
+    return{
+      isActive: true,
+    }
+  },
+
+  methods(){
+
+  },
+
+  mounted(){
+    console.log(this.$router.currentRoute.path.split('/').pop())
+  }
 }
+
 </script>
 
 <style scoped>
