@@ -26,8 +26,8 @@ img {
 body {
   font-family: var(--body-font);
   color: var(--body-color);
-  background-image: url("https://images.unsplash.com/photo-1445251836269-d158eaa028a6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1951&q=80");
-  background-image: url(https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80);
+  background-image: url("https://i.postimg.cc/V6sMbKsF/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif");
+  background-image: url(https://i.postimg.cc/V6sMbKsF/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1166,6 +1166,10 @@ input[type="number"]::-webkit-input-placeholder {
 }
 
 input[type="email"]::-webkit-input-placeholder {
+  color: rgb(180, 180, 180);
+}
+
+input[type="password"]::-webkit-input-placeholder {
   color: rgb(180, 180, 180);
 }
 

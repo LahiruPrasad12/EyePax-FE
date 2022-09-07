@@ -1,8 +1,11 @@
 <template>
   <div>
-  <div class="main-container" style="width: 1000px;">
-    <form class="box" style="background-color: rgba(21, 20, 26, 0.63); border-radius: 20px">
-      <h1 style="text-align:center; font-size: 25px; color: white; margin-top: 2%; font-weight: 400;">Already registered? Sign in here</h1>
+  
+  <div class="main-container">
+    <br/><br/><br/>
+    <img src="https://i.postimg.cc/x1qdwBxH/Eyepax-d-Logo-1.png"/>
+    <form class="" >
+      <h1 style="text-align:center; font-size: 25px; color: white; margin-top: 2%; font-weight: 600;">Welcome</h1>
       <br/>
       <validation-observer ref="loginValidation">
       <div class="field">
@@ -11,7 +14,7 @@
           name="Email"
           rules="required|emailTest"
         >
-        <label class="label" style="color: #808191;">Email</label>
+        <label class="label" style="color: rgb(180, 180, 180);">Email</label>
         <div class="control">
           <input v-model="form.email" class="input" placeholder="e.g. alex@example.com" type="email">
         </div>
@@ -20,27 +23,32 @@
       </div>
 
       <div class="field">
-        <label class="label" style="color: #808191;">Password</label>
+        <label class="label" style="color: rgb(180, 180, 180);">Password</label>
         <div class="control">
           <input v-model="form.password" class="input" placeholder="********" type="password">
         </div>
       </div>
       <br/>
+      <center>
         <button :disabled="is_btn_loading" class="button is-primary" @click="signIN" style="margin-bottom: 2%">
           {{ is_btn_loading ? 'Signing....' : 'Sign in' }}
         </button>
+      </center>
       </validation-observer>
     </form>
   </div>
-
+    <div class="content has-text-centered">
+      <p style="margin-top:30%">
+        © 2022. EyePax Technologies. All Rights Reserved.
+      </p>
+    </div>
 </div>
 </template>
 
 <script>
 import {ValidationObserver, ValidationProvider} from 'vee-validate'
 import ToastMixin from "../../mixins/ToastMixin";
-import {mapActions, mapGetters} from 'vuex'
-import router from "../../router";
+import {mapActions} from 'vuex'
 export default {
   name: "login",
   components: {
@@ -58,9 +66,6 @@ export default {
     }
   },
 
-  computed: {
-    ...mapGetters(['currentUser'])
-  },
   methods: {
     ...mapActions(['login']),
     async signIN() {
@@ -74,16 +79,6 @@ export default {
         this.danger('Your username or password is incorrect')
       }
       this.is_btn_loading = false
-    }
-  },
-
-  async mounted() {
-    if(this.currentUser != null){
-      if(this.currentUser.account_type === 'admin'){
-        await router.replace('/admin/home')
-      }else if(this.currentUser.account_type === 'supplier'){
-        await router.replace('/supplier/home')
-      }
     }
   }
 

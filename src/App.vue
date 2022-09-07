@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <div v-if="currentUser != null" >
+      <div v-if="currentUser != null">
         <Sidebar/>
       </div>
 
@@ -10,12 +10,18 @@
           <!-- <div class="search-bar">
            <input type="text" placeholder="Search">
           </div> -->
-          <div class="user-settings">
+          <div v-if="currentUser != null"  class="user-settings">
             <img alt="" class="user-img" src="https://i.postimg.cc/Hs8Kgb73/ezgif-com-gif-maker.gif">
-            <div class="user-name">Admin</div>
+            <div class="user-name">
+              Welcome !
+              <br/>
+              {{currentUser.first_name}} {{currentUser.last_name}}
+            </div>
           </div>
         </div>
+
         <router-view/>
+
       </div>
     </div>
   </div>
@@ -33,19 +39,20 @@ export default {
   computed: {
     ...mapGetters(['currentUser'])
   },
-  methods: {
+  methods:{
     ...mapActions(['autoLogin']),
     async autoLoginUser() {
       try {
         await this.autoLogin()
       } catch(e) {
+        this.danger('Unauthenticated')
         await this.$router.push('/')
       }
     }
   },
-  async mounted() {
+  mounted() {
     if(this.currentUser == null){
-      await this.autoLoginUser()
+      this.autoLoginUser()
     }
   }
 }
