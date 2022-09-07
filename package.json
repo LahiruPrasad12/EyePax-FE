@@ -18,7 +18,8 @@
     "bootstrap-vue": "^2.22.0",
     "buefy": "^0.9.21",
     "vue": "^2.7.10",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-select": "^3.20.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
