@@ -115,8 +115,8 @@
       </b-table-column>
 
     </b-table>
-<!--    <create_item ref="create_item" @getAllItems="getAllItems"/>-->
-<!--    <edit_item ref="edit_item" @getAllItems="getAllItems"/>-->
+    <create_stock ref="create_stock" @getAllStocks="getAllStocks"/>
+<!--    <edit_item ref="edit_item" @getAllStocks="getAllStocks"/>-->
   </div>
 </template>
 
@@ -124,6 +124,7 @@
 // import SupplierApis from '../../../apis/modules/supplier_apis/supplier_apis';
 import StockApis from '../../../apis/modules/stock_apis/stock_apis';
 // import create_item from "./create_item";
+import create_stock from "./create_stock";
 // import edit_item from "./edit_item";
 import ToastMixin from "../../../mixins/ToastMixin";
 
@@ -131,7 +132,7 @@ export default {
   name: "index",
   mixins:[ToastMixin],
   components: {
-    // create_item,
+    create_stock,
     // edit_item
   },
   data() {

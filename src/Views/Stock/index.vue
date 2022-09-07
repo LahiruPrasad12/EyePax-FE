@@ -36,7 +36,7 @@ export default {
 
   methods: {
     createItem() {
-      this.$refs.all_items.$refs.create_item.openModal()
+      this.$refs.all_items.$refs.create_stock.openModal()
     },
   }
 }
