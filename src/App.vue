@@ -7,16 +7,18 @@
           <!-- <div class="search-bar">
            <input type="text" placeholder="Search">
           </div> -->
-          <div class="user-settings">
+          <div v-if="currentUser != null"  class="user-settings">
             <img alt="" class="user-img" src="https://i.postimg.cc/Hs8Kgb73/ezgif-com-gif-maker.gif">
-            <div class="user-name">Admin</div>
+            <div class="user-name">
+              Welcome !
+              <br/>
+              {{currentUser.first_name}} {{currentUser.last_name}}
+            </div>
           </div>
         </div>
 
-
         <router-view/>
-
-
+        
       </div>
     </div>
   </div>

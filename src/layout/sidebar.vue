@@ -29,7 +29,7 @@
           </svg>
           Stock
         </a>
-        <a v-if="currentUser && currentUser.account_type === 'stock-manager'" class="sidebar-link"
+        <a v-if="currentUser && currentUser.account_type === 'supplier'" class="sidebar-link"
            href="/#/supplier/home">
           <svg fill="currentColor" viewBox="0 0 24 24">
             <path clip-rule="evenodd"

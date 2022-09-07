@@ -1169,6 +1169,10 @@ input[type="email"]::-webkit-input-placeholder {
   color: rgb(180, 180, 180);
 }
 
+input[type="password"]::-webkit-input-placeholder {
+  color: rgb(180, 180, 180);
+}
+
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
