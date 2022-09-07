@@ -1,6 +1,5 @@
 <template>
   <div>
-  
   <div class="main-container" style="width: 1000px;">
     <form class="box" style="background-color: rgba(21, 20, 26, 0.63); border-radius: 20px">
       <h1 style="text-align:center; font-size: 25px; color: white; margin-top: 2%; font-weight: 400;">Already registered? Sign in here</h1>
@@ -40,7 +39,8 @@
 <script>
 import {ValidationObserver, ValidationProvider} from 'vee-validate'
 import ToastMixin from "../../mixins/ToastMixin";
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
+import router from "../../router";
 export default {
   name: "login",
   components: {
@@ -58,6 +58,9 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters(['currentUser'])
+  },
   methods: {
     ...mapActions(['login']),
     async signIN() {
@@ -71,6 +74,16 @@ export default {
         this.danger('Your username or password is incorrect')
       }
       this.is_btn_loading = false
+    }
+  },
+
+  async mounted() {
+    if(this.currentUser != null){
+      if(this.currentUser.account_type === 'admin'){
+        await router.replace('/admin/home')
+      }else if(this.currentUser.account_type === 'supplier'){
+        await router.replace('/supplier/home')
+      }
     }
   }
 

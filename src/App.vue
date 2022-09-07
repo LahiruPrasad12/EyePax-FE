@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <div class="container">
-      <Sidebar/>
+      <div v-if="currentUser != null" >
+        <Sidebar/>
+      </div>
+
       <div class="wrapper">
         <div class="header">
           <!-- <div class="search-bar">
@@ -12,11 +15,7 @@
             <div class="user-name">Admin</div>
           </div>
         </div>
-
-
         <router-view/>
-
-
       </div>
     </div>
   </div>
@@ -34,20 +33,19 @@ export default {
   computed: {
     ...mapGetters(['currentUser'])
   },
-  methods:{
+  methods: {
     ...mapActions(['autoLogin']),
     async autoLoginUser() {
       try {
         await this.autoLogin()
       } catch(e) {
-        this.danger('Unauthenticated')
         await this.$router.push('/')
       }
     }
   },
-  mounted() {
+  async mounted() {
     if(this.currentUser == null){
-      this.autoLoginUser()
+      await this.autoLoginUser()
     }
   }
 }

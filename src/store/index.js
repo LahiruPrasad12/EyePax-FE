@@ -22,7 +22,6 @@ export default  new Vuex.Store({
   },
   actions: {
     async login({ commit },form){
-
       let payload = {
         email : form.email,
         password : form.password
