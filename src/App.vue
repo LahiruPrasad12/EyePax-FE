@@ -45,7 +45,6 @@ export default {
       try {
         await this.autoLogin()
       } catch(e) {
-        this.danger('Unauthenticated')
         await this.$router.push('/')
       }
     }
