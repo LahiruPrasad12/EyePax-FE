@@ -17,66 +17,69 @@
           {{ props.row.item_code }}
         </template>
       </b-table-column>
-      <b-table-column field="name" label="Item Name">
+<!--      <b-table-column field="name" label="Item Name">-->
+<!--        <template v-slot:header="{ column }">-->
+<!--          <b-tooltip :label="column.label" append-to-body dashed>-->
+<!--            {{ column.label }}-->
+<!--          </b-tooltip>-->
+<!--        </template>-->
+<!--        <template v-slot="props">-->
+<!--          {{ props.row.name }}-->
+<!--        </template>-->
+<!--      </b-table-column>-->
+<!--      <b-table-column field="brand" label="Brand">-->
+<!--        <template v-slot:header="{ column }">-->
+<!--          <b-tooltip :label="column.label" append-to-body dashed>-->
+<!--            {{ column.label }}-->
+<!--          </b-tooltip>-->
+<!--        </template>-->
+<!--        <template v-slot="props">-->
+<!--          {{ props.row.brand }}-->
+<!--        </template>-->
+<!--      </b-table-column>-->
+      <b-table-column field="available_stock" label="Available stock">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
           </b-tooltip>
         </template>
         <template v-slot="props">
-          {{ props.row.name }}
+          {{ props.row.available_stock }}
         </template>
       </b-table-column>
-      <b-table-column field="qty" label="Qty">
+
+      <b-table-column field="reservation" label="Reservation">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
           </b-tooltip>
         </template>
         <template v-slot="props">
-          {{ props.row.qty }}
+          {{ props.row.reservation }}
         </template>
       </b-table-column>
-      <b-table-column field="brand" label="Brand">
+
+      <b-table-column field="Availability" label="Availability">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
           </b-tooltip>
         </template>
         <template v-slot="props">
-          {{ props.row.brand }}
+          {{ props.row.Availability?"Yes":"No" }}
         </template>
       </b-table-column>
-      <b-table-column field="price" label="Price(LKR)">
+      <b-table-column field="last_update" label="Last Update">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
             {{ column.label }}
           </b-tooltip>
         </template>
         <template v-slot="props">
-          {{ props.row.price }}
+          {{ props.row.last_update }}
         </template>
       </b-table-column>
-      <b-table-column field="created_at" label="Created At">
-        <template v-slot:header="{ column }">
-          <b-tooltip :label="column.label" append-to-body dashed>
-            {{ column.label }}
-          </b-tooltip>
-        </template>
-        <template v-slot="props">
-          {{ props.row.created_at }}
-        </template>
-      </b-table-column>
-      <b-table-column field="enabled" label="Active Status">
-        <template v-slot:header="{ column }">
-          <b-tooltip :label="column.label" append-to-body dashed>
-            {{ column.label }}
-          </b-tooltip>
-        </template>
-        <template v-slot="props">
-          {{ props.row.enabled?"Enabled":"Disabled" }}
-        </template>
-      </b-table-column>
+
 
       <b-table-column field="action" label="Edit">
         <template v-slot="props">
@@ -118,7 +121,8 @@
 </template>
 
 <script>
-import SupplierApis from '../../../apis/modules/supplier_apis/supplier_apis';
+// import SupplierApis from '../../../apis/modules/supplier_apis/supplier_apis';
+import StockApis from '../../../apis/modules/stock_apis/stock_apis';
 // import create_item from "./create_item";
 // import edit_item from "./edit_item";
 import ToastMixin from "../../../mixins/ToastMixin";
@@ -138,52 +142,45 @@ export default {
           label: 'Item Code',
           width: '40'
         },
+        // {
+        //   field: 'name',
+        //   label: 'Item Name',
+        // },
         {
-          field: 'name',
-          label: 'Item Name',
+          field: 'available_stock',
+          label: 'Available stock',
         },
         {
-          field: 'qty',
-          label: 'Qty',
+          field: 'reservation',
+          label: 'Reservation',
         },
         {
-          field: 'brand',
-          label: 'Brand',
+          field: 'Availability',
+          label: 'Availability',
         },
         {
-          field: 'price',
-          label: 'Price',
-        },
-        {
-          field: 'enabled',
-          label: 'Enabled',
-        },
-        {
-          field: 'created_at',
-          label: 'Created At',
+          field: 'last_update',
+          label: 'Last Update',
         },
       ],
-      item: [],
+      stock: [],
       is_table_loading: false
     }
   },
 
   methods: {
-    async getAllItems() {
+    async getAllStocks() {
       try {
         this.is_table_loading = true
-        let respond = (await SupplierApis.getAllItems()).data.data.items
+        // let respond = (await SupplierApis.getAllItems()).data.data.items
+        let respond = (await StockApis.getAllStocks()).data.data.items
         this.item = respond.map((e, index) => ({
           id: index + 1,
-          _id:e._id,
           item_code: e.item_code,
-          name: e.name,
-          qty: e.qty,
-          description: e.description,
-          price: e.price,
-          brand: e.brand,
-          enabled: e.enabled,
-          created_at: e.created_at.substring(0, 10)
+          available_stock: e.available_stock,
+          reservation: e.reservation,
+          Availability: e.Availability,
+          last_update: e.last_update.substring(0, 10)
         }))
       } catch (e) {
 
@@ -192,7 +189,7 @@ export default {
     },
 
     closeModel() {
-      this.getAllItems()
+      this.getAllStocks()
     },
 
     editItem(data) {
@@ -218,7 +215,7 @@ export default {
 
         await SupplierApis.deleteItem(data._id)
         this.success('Item Deleted Successfully')
-        await this.getAllItems()
+        await this.getAllStocks()
       }catch (e) {
         this.$buefy.toast.open(e.message)
       }
@@ -226,7 +223,7 @@ export default {
   },
 
   async mounted() {
-    await this.getAllItems()
+    await this.getAllStocks()
   }
 }
 </script>
