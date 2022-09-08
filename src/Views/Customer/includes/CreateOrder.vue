@@ -103,7 +103,7 @@ export default {
         async getAllItems() {
             try {
                 this.is_table_loading = true
-                let respond = (await SupplierApis.getAllItems()).data.data.items
+                let respond = (await SupplierApis.getAll()).data.data.items
                 this.item = respond.map((e, index) => ({
                     value: e._id,
                     label: e.name,
