@@ -32,7 +32,11 @@ export default  new Vuex.Store({
       if(respond.data.user.account_type === 'admin'){
         await router.replace('/admin/home')
       }else if(respond.data.user.account_type === 'supplier'){
-        await router.replace('/supplier/home')
+        await router.replace('/admin/home')
+      }else if(respond.data.user.account_type === 'staff'){
+        await router.replace('/admin/home')
+      }else if(respond.data.user.account_type === 'stock-manager'){
+        await router.replace('/admin/home')
       }
     },
 
@@ -42,7 +46,11 @@ export default  new Vuex.Store({
       if(respond.data.user.account_type === 'admin'){
         await router.replace('/admin/home')
       }else if(respond.data.user.account_type === 'supplier'){
-        await router.replace('/supplier/home')
+        await router.replace('/admin/home')
+      }else if(respond.data.user.account_type === 'staff'){
+        await router.replace('/admin/home')
+      }else if(respond.data.user.account_type === 'stock-manager'){
+        await router.replace('/admin/home')
       }
     },
   }

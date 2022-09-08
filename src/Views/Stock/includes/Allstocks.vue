@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="anim" style="--delay:0.2s;">
     <b-table ref="itemTable" :data="item" :loading="is_table_loading" hover responsive>
       <b-table-column field="item_code" label="Item Code">
         <template v-slot:header="{ column }">
@@ -106,8 +107,9 @@
           </b-tooltip>
         </template>
       </b-table-column>
-
     </b-table>
+    </div>
+    
     <create_stock ref="create_stock" @getAllStocks="getAllStocks" />
     <edit_stock ref="edit_stock" @getAllStocks="getAllStocks" />
   </div>

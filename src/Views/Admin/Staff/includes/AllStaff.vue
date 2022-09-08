@@ -39,6 +39,16 @@
           {{ props.row.email }}
         </template>
       </b-table-column>
+      <b-table-column field="account_type" label="Role">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.account_type }}
+        </template>
+      </b-table-column>
       <b-table-column field="DOB" label="DOB">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
@@ -133,6 +143,10 @@ export default {
         {
           field: 'email',
           label: 'Email',
+        },
+        {
+          field: 'Role',
+          label: 'account_type',
         },
         {
           field: 'DOB',

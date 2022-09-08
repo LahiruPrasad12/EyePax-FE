@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar anim" style="--delay:0.1s;">
     <span class="logo">S</span>
-    <a class="logo-expand" href="/" style="font-size:25px">EyePax</a>
+    <a class="logo-expand" href="/#/" style="font-size:25px">EyePax</a>
     <p>TECHNOLOGIES</p>
     <div class="side-wrapper">
       <div class="side-title">MENU</div>
@@ -22,7 +22,7 @@
           </svg>
           Order
         </a>
-        <a v-if="currentUser && currentUser.account_type === 'stock-manager'" class="sidebar-link" href="#">
+        <a v-if="currentUser && currentUser.account_type === 'stock-manager'" class="sidebar-link" href="/#/stock/home">
           <svg fill="currentColor" viewBox="0 0 24 24">
             <path
               d="M11.23 7.29V3.283c0-.427.34-.782.77-.782.385 0 .711.298.763.677l.007.104v4.01h4.78c2.38 0 4.335 1.949 4.445 4.38l.005.215v5.04c0 2.447-1.887 4.456-4.232 4.569l-.208.005H6.44c-2.38 0-4.326-1.94-4.435-4.379L2 16.905v-5.03c0-2.447 1.878-4.466 4.222-4.58l.208-.004h4.8v6.402l-1.6-1.652a.755.755 0 00-1.09 0 .81.81 0 00-.22.568c0 .157.045.32.14.459l.08.099 2.91 3.015c.14.155.34.237.55.237a.735.735 0 00.465-.166l.075-.071 2.91-3.015c.3-.31.3-.816 0-1.126a.755.755 0 00-1.004-.077l-.086.077-1.59 1.652V7.291h-1.54z"/>
