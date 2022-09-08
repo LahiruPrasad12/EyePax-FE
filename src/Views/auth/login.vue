@@ -3,7 +3,7 @@
   
   <div class="main-container anim" style="--delay:0.2s;">
     <br/><br/><br/>
-    <img src="../../../src/assets/Eyepax_logo.png"/>
+    <img src="https://i.postimg.cc/4NB31nQY/Eyepax-logo.png"/>
     <form style="margin-bottom: 40%" >
       <h1 style="text-align:center; font-size: 25px; color: white; margin-top: 2%; font-weight: 600;">Welcome</h1>
       <br/>

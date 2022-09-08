@@ -26,8 +26,8 @@ img {
 body {
   font-family: var(--body-font);
   color: var(--body-color);
-  background-image: url("../assets/background.gif");
-  background-image: url(../assets/background.gif);
+  background-image: url("https://i.postimg.cc/43PFSknN/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif");
+  background-image: url(https://i.postimg.cc/43PFSknN/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -361,7 +361,7 @@ body:before {
 }
 
 .main-blog {
-  background-image: url("../assets/order.png");
+  background-image: url("https://i.postimg.cc/g2JCb0FL/order.png");
   background-size: 80%;
   background-position-x: 150px;
   background-color: #31abbd;
@@ -380,7 +380,7 @@ body:before {
   margin-left: 20px;
   width: 35%;
   background-color: rgb(245, 184, 92);
-  background-image: url("../assets/stock.png");
+  background-image: url("https://i.postimg.cc/SNtZ873j/stock.png");
   background-position-x: 0;
   background-size: 139%;
   filter: saturate(1.4);
