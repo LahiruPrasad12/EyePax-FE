@@ -26,8 +26,8 @@ img {
 body {
   font-family: var(--body-font);
   color: var(--body-color);
-  background-image: url("https://images.unsplash.com/photo-1445251836269-d158eaa028a6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1951&q=80");
-  background-image: url(https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80);
+  background-image: url("../assets/background.gif");
+  background-image: url(../assets/background.gif);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -309,7 +309,6 @@ body:before {
           animation: bottom 0.8s var(--delay) both;
           
 }
-
 .main-header {
   font-size: 30px;
   color: #fff;
@@ -1169,13 +1168,17 @@ input[type="email"]::-webkit-input-placeholder {
   color: rgb(180, 180, 180);
 }
 
+input[type="password"]::-webkit-input-placeholder {
+  color: rgb(180, 180, 180);
+}
+
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
 .select select[disabled], .taginput [disabled].taginput-container.is-focusable, [disabled].textarea, [disabled].input, fieldset[disabled] .select select, .select fieldset[disabled] select, fieldset[disabled] .taginput .taginput-container.is-focusable, .taginput fieldset[disabled] .taginput-container.is-focusable, fieldset[disabled] .textarea, fieldset[disabled] .input {
     background-color: rgba(21, 20, 26, 0.63);
-    border-color: rgb(255, 43, 43);
+    border-color: #424050;
     box-shadow: none;
     color: rgb(180, 180, 180);
   }
@@ -1255,4 +1258,8 @@ input[type="email"]::-webkit-input-placeholder {
   margin: 4px 2px 0px 2px;
   padding: 0 0.25em;
   z-index: 0;
+}
+
+.ft {
+  position: relative;
 }

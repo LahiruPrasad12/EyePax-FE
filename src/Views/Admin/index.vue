@@ -17,12 +17,12 @@
      <div class="author-info">53K views <span class="seperate"></span>2 weeks ago</div>
     </div>
    </div>
-   <div class="main-blog__time">7 min</div>
+   
   </div>
   <div class="main-blog anim" style="--delay: .2s">
      <div class="main-blog__title">Skateboard Tips You need to know</div>
      <div class="main-blog__author tips">
-      <div class="main-blog__time">7 min</div>
+      
       <div class="author-img__wrapper">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
         <path d="M20 6L9 17l-5-5" />
@@ -53,7 +53,7 @@
    <div class="video-view">54K views<span class="seperate video-seperate"></span>1 week ago</div>
   </div>
   <div class="video anim" style="--delay: .5s">
-   <div class="video-time">5 min</div>
+   
    <div class="video-wrapper">
     <video muted="">
      <source src="https://player.vimeo.com/external/449972745.sd.mp4?s=9943177fe8a6147b7bc4598259401f06ec57878a&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
@@ -70,7 +70,7 @@
    <div class="video-view">42K views<span class="seperate video-seperate"></span>1 week ago</div>
   </div>
   <div class="video anim" style="--delay: .6s">
-   <div class="video-time">7 min</div>
+   
    <div class="video-wrapper">
     <video muted="">
      <source src="https://player.vimeo.com/external/436553499.sd.mp4?s=0e44527f269278743db448761e35c5e39cfaa52c&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
@@ -87,7 +87,7 @@
    <div class="video-view">64K views<span class="seperate video-seperate"></span>2 week ago</div>
   </div>
   <div class="video anim" style="--delay: .7s">
-   <div class="video-time">6 min</div>
+   
    <div class="video-wrapper">
     <video muted="">
      <source src="https://player.vimeo.com/external/361861493.sd.mp4?s=19d8275ca755d653042a87ef28b2f0b2eabf57d0&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
@@ -257,6 +257,11 @@
   </div>
  </div>
 </div>
+      <div class="ft anim" style="--delay:0.3s; margin-bottom: 1%;">
+          <p style="text-align:center">
+            © 2022. EyePax Technologies. All Rights Reserved.
+          </p>
+      </div>
 </div>
 </template>
 

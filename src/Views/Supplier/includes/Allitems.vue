@@ -1,5 +1,6 @@
 <template>
     <div >
+      <div class="anim" style="--delay:0.2s;">
       <b-table 
         ref="itemTable"
         :data="item"
@@ -112,6 +113,7 @@
         </b-table-column>
   
       </b-table>
+    </div>
       <create_item ref="create_item" @getAllItems="getAllItems"/>
       <edit_item ref="edit_item" @getAllItems="getAllItems"/>
     </div>

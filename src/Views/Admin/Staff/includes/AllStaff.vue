@@ -1,6 +1,7 @@
 <template>
 
   <div>
+    <div class="anim" style="--delay:0.2s;">
     <b-table
       ref="staffTable"
       :data="staff"
@@ -91,8 +92,9 @@
           </b-tooltip>
         </template>
       </b-table-column>
-
     </b-table>
+    </div>
+
     <create_staff ref="create_staff" @getAllStaff="getAllStaff"/>
     <edit_staff ref="edit_staff" @getAllStaff="getAllStaff"/>
     <!--    <createNotice ref="create_form"/>-->
