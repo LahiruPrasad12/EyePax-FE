@@ -11,7 +11,7 @@
            <input type="text" placeholder="Search">
           </div> -->
           <div v-if="currentUser != null"  class="user-settings">
-            <img alt="" class="user-img" src="https://i.postimg.cc/Hs8Kgb73/ezgif-com-gif-maker.gif">
+            <img alt="" class="user-img" src="./assets/Profile.gif">
             <div class="user-name">
               Welcome !
               <br/>
@@ -21,7 +21,7 @@
         </div>
 
         <router-view/>
-
+        
       </div>
     </div>
   </div>
@@ -30,12 +30,11 @@
 
 <script>
 import Sidebar from "./layout/sidebar";
-import New from "./layout/new";
 import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'App',
-  components: {Sidebar, New},
+  components: {Sidebar},
   computed: {
     ...mapGetters(['currentUser'])
   },

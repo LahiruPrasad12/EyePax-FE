@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="anim" style="--delay:0.2s;">
         <b-table ref="itemTable" :data="orders" :loading="is_table_loading" hover responsive>
             <b-table-column field="order_id" label="Order ID">
                 <template v-slot:header="{ column }">
@@ -83,8 +84,9 @@
                     </b-tooltip>
                 </template>
             </b-table-column>
-
         </b-table>
+        </div>
+        
         <create_order ref="create_order" @getAllItems="getAllItems" />
         <edit_order ref="edit_item" @getAllOrders="getAllOrders" />
     </div>
