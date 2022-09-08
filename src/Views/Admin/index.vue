@@ -26,12 +26,12 @@
  <div class="videos">
   <div class="video anim" style="--delay: .4s">
    <div class="video-wrapper">
-    <img src="../../assets/sup.jpg" type="">
+    <img src="https://i.postimg.cc/50HTYKN4/sup.jpg" type="">
     <div class="author-img__wrapper video-author">
      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
       <path d="M20 6L9 17l-5-5" />
      </svg>
-     <img class="author-img" src="../../assets/sup2.jpg" />
+     <img class="author-img" src="https://i.postimg.cc/cHX7WdN6/sup2.jpg" />
     </div>
    </div>
    <div class="video-by">Supplier Management</div>
@@ -41,12 +41,12 @@
   <div class="video anim" style="--delay: .5s">
    
    <div class="video-wrapper">
-     <img src="../../assets/staff_c.jpg" type="">
+     <img src="https://i.postimg.cc/Qtk5bhM0/staff-c.jpg" type="">
     <div class="author-img__wrapper video-author">
      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
       <path d="M20 6L9 17l-5-5" />
      </svg>
-     <img class="author-img" src="../../assets/staff2.jpg" />
+     <img class="author-img" src="https://i.postimg.cc/0Nv7Jzkb/staff2.jpg" />
     </div>
    </div>
    <div class="video-by">User Management</div>
@@ -56,12 +56,12 @@
   <div class="video anim" style="--delay: .6s">
    
    <div class="video-wrapper">
-    <img src="../../assets/item.jpg" type="">
+    <img src="https://i.postimg.cc/RV3hCvzy/item.jpg" type="">
     <div class="author-img__wrapper video-author">
      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
       <path d="M20 6L9 17l-5-5" />
      </svg>
-     <img class="author-img" src="../../assets/item2.jpg" />
+     <img class="author-img" src="https://i.postimg.cc/tRcPNSR0/item2.jpg" />
     </div>
    </div>
    <div class="video-by">Supplier Management</div>
@@ -71,12 +71,12 @@
   <div class="video anim" style="--delay: .7s">
    
    <div class="video-wrapper">
-    <img src="../../assets/de.jpg" type="">
+    <img src="https://i.postimg.cc/nh2h0rKs/de.jpg" type="">
     <div class="author-img__wrapper video-author">
      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
       <path d="M20 6L9 17l-5-5" />
      </svg>
-     <img class="author-img" src="../../assets/de2.jpg" />
+     <img class="author-img" src="https://i.postimg.cc/pT69krHQ/de2.jpg" />
     </div>
    </div>
    <div class="video-by">DELIVERY Management</div>

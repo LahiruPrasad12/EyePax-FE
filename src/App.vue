@@ -11,7 +11,7 @@
            <input type="text" placeholder="Search">
           </div> -->
           <div v-if="currentUser != null"  class="user-settings">
-            <img alt="" class="user-img" src="./assets/Profile.gif">
+            <img alt="" class="user-img" src="https://i.postimg.cc/RCGmky68/Profile.gif">
             <div class="user-name">
               Welcome !
               <br/>
@@ -21,7 +21,7 @@
         </div>
 
         <router-view/>
-        
+
       </div>
     </div>
   </div>
