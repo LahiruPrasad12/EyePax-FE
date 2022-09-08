@@ -55,8 +55,8 @@
                 <b-table-column field="action" label="Edit">
                     <template v-slot="props">
                         <b-tooltip label="Edit" position="is-right" target="">
-                            <b-button outlined style="border: hidden; background-color: #1f1d2b;"
-                                @click="editOrder(props.row)">
+                            <b-button outlined v-if="props.row.status === 'Initiated'"
+                                style="border: hidden; background-color: #1f1d2b;" @click="editOrder(props.row)">
                                 <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16"
                                     style="color: #ff7551" width="16" xmlns="http://www.w3.org/2000/svg">
                                     <path
