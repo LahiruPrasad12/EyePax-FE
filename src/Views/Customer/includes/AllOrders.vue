@@ -86,7 +86,7 @@
 
         </b-table>
         <create_order ref="create_order" @getAllItems="getAllItems" />
-        <edit_order ref="edit_item" @getAllItems="getAllItems" />
+        <edit_order ref="edit_item" @getAllOrders="getAllOrders" />
     </div>
 </template>
   
@@ -140,8 +140,9 @@ export default {
                 let respond = (await CustomerApis.getAllOrders()).data
 
                 this.orders = respond.map((e, index) => ({
-                    id: index + 1,
+                    id: e.orders._id,
                     order_id: e.orders.orderId,
+                    price: e.items.price,
                     item: e.items.name,
                     qty: e.orders.quantity,
                     status: e.orders.status,
