@@ -85,7 +85,7 @@
         <template v-slot="props">
           <b-tooltip label="Edit"
                      position="is-right" target="">
-            <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="editItem(props.row)">
+            <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="editStock(props.row)">
               <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16" style="color: #ff7551"
                    width="16" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -116,7 +116,7 @@
 
     </b-table>
     <create_stock ref="create_stock" @getAllStocks="getAllStocks"/>
-<!--    <edit_item ref="edit_item" @getAllStocks="getAllStocks"/>-->
+    <edit_stock ref="edit_stock" @getAllStocks="getAllStocks"/>
   </div>
 </template>
 
@@ -125,7 +125,7 @@
 import StockApis from '../../../apis/modules/stock_apis/stock_apis';
 // import create_item from "./create_item";
 import create_stock from "./create_stock";
-// import edit_item from "./edit_item";
+import edit_stock from "./edit_stock";
 import ToastMixin from "../../../mixins/ToastMixin";
 
 export default {
@@ -133,7 +133,7 @@ export default {
   mixins:[ToastMixin],
   components: {
     create_stock,
-    // edit_item
+    edit_stock
   },
   data() {
     return {
@@ -173,15 +173,15 @@ export default {
     async getAllStocks() {
       try {
         this.is_table_loading = true
-        // let respond = (await SupplierApis.getAllItems()).data.data.items
-        let respond = (await StockApis.getAllStocks()).data.data.items
+        let respond = (await StockApis.getAllStocks()).data
         this.item = respond.map((e, index) => ({
           id: index + 1,
-          item_code: e.item_code,
-          available_stock: e.available_stock,
-          reservation: e.reservation,
-          Availability: e.Availability,
-          last_update: e.last_update.substring(0, 10)
+          _id: e.stocks._id,
+          item_code: e.items.item_code,
+          available_stock: e.stocks.available_stock,
+          reservation: e.stocks.reservation,
+          Availability: e.stocks.Availability,
+          last_update: e.stocks.last_update.substring(0, 10)
         }))
       } catch (e) {
 
@@ -193,9 +193,9 @@ export default {
       this.getAllStocks()
     },
 
-    editItem(data) {
+    editStock(data) {
       try {
-        this.$refs.edit_item.openModal(data)
+        this.$refs.edit_stock.openModal(data)
       } catch (e) {
 
       }
@@ -203,19 +203,19 @@ export default {
 
     confirmCustomDelete(data) {
       this.$buefy.dialog.confirm({
-        title: 'Deleting Item',
-        message: 'Are you sure you want to <b style="color:white;">Delete</b> this item? This action cannot be undone.',
-        confirmText: 'Delete Item',
+        title: 'Deleting Stock',
+        message: 'Are you sure you want to <b style="color:white;">Delete</b> this stock? This action cannot be undone.',
+        confirmText: 'Delete Stock',
         type: 'is-danger',
         hasIcon: true,
-        onConfirm: () => this.deleteItem(data)
+        onConfirm: () => this.deleteStock(data)
       })
     },
-    async deleteItem(data) {
+    async deleteStock(data) {
       try{
 
-        await SupplierApis.deleteItem(data._id)
-        this.success('Item Deleted Successfully')
+        await StockApis.deleteStock(data._id)
+        this.success('Stock Deleted Successfully')
         await this.getAllStocks()
       }catch (e) {
         this.$buefy.toast.open(e.message)
