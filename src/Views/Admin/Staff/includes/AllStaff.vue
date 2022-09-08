@@ -1,6 +1,7 @@
 <template>
 
   <div>
+    <div class="anim" style="--delay:0.2s;">
     <b-table
       ref="staffTable"
       :data="staff"
@@ -36,6 +37,16 @@
         </template>
         <template v-slot="props">
           {{ props.row.email }}
+        </template>
+      </b-table-column>
+      <b-table-column field="account_type" label="Role">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.account_type }}
         </template>
       </b-table-column>
       <b-table-column field="DOB" label="DOB">
@@ -91,8 +102,9 @@
           </b-tooltip>
         </template>
       </b-table-column>
-
     </b-table>
+    </div>
+
     <create_staff ref="create_staff" @getAllStaff="getAllStaff"/>
     <edit_staff ref="edit_staff" @getAllStaff="getAllStaff"/>
     <!--    <createNotice ref="create_form"/>-->
@@ -131,6 +143,10 @@ export default {
         {
           field: 'email',
           label: 'Email',
+        },
+        {
+          field: 'Role',
+          label: 'account_type',
         },
         {
           field: 'DOB',

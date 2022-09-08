@@ -1,10 +1,10 @@
 <template>
   <div>
   
-  <div class="main-container">
+  <div class="main-container anim" style="--delay:0.2s;">
     <br/><br/><br/>
-    <img src="https://i.postimg.cc/x1qdwBxH/Eyepax-d-Logo-1.png"/>
-    <form class="" >
+    <img src="https://i.postimg.cc/4NB31nQY/Eyepax-logo.png"/>
+    <form style="margin-bottom: 40%" >
       <h1 style="text-align:center; font-size: 25px; color: white; margin-top: 2%; font-weight: 600;">Welcome</h1>
       <br/>
       <validation-observer ref="loginValidation">
@@ -37,11 +37,11 @@
       </validation-observer>
     </form>
   </div>
-    <div class="content has-text-centered">
-      <p style="margin-top:30%">
-        © 2022. EyePax Technologies. All Rights Reserved.
+  <div class="ft anim" style="--delay:0.3s;">
+      <p style="text-align:center">
+          © 2022. EyePax Technologies. All Rights Reserved.
       </p>
-    </div>
+  </div>
 </div>
 </template>
 

@@ -22,7 +22,8 @@
                                         <validation-provider #default="{ errors }" name="qty" rules="required">
                                             <b-field :message="errors[0]" :type="errors[0] ? 'is-danger' : 'is-success'"
                                                 label="Item*">
-                                                <v-select :options="item" v-model="form.item" style="color: rgb(180, 180, 180);" placeholder="Select an Item">
+                                                <v-select :options="item" v-model="form.item"
+                                                    style="color: rgb(180, 180, 180);" placeholder="Select an Item">
                                                     <!-- <b-select v-model="form.role" placeholder="Select a role">
                                                         <option value="" style="color: rgb(180, 180, 180);">Select a role</option>
                                                         <option value="staff" style="color: rgb(180, 180, 180);">Staff</option>
@@ -35,9 +36,9 @@
                                         </validation-provider>
                                         <br />
                                         <validation-provider #default="{ errors }" name="qty" rules="required">
-                                            <b-field :message="errors[0]" :type="errors[0] ? 'is-danger' : 'is-success'"
+                                            <b-field :message="errors[0]" :type="errors[0] ? 'is-danger' : 'is-danger'"
                                                 label="Quantity*">
-                                                <b-input v-model="form.qty" placeholder="e.g. 12" type="number">
+                                                <b-input v-model="form.qty" placeholder="E.g. 12" min="1" type="number">
                                                 </b-input>
                                             </b-field>
                                         </validation-provider>
@@ -102,7 +103,7 @@ export default {
         async getAllItems() {
             try {
                 this.is_table_loading = true
-                let respond = (await SupplierApis.getAllItems()).data.data.items
+                let respond = (await SupplierApis.getAll()).data.data.items
                 this.item = respond.map((e, index) => ({
                     value: e._id,
                     label: e.name,

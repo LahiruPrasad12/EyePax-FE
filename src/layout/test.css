@@ -26,8 +26,8 @@ img {
 body {
   font-family: var(--body-font);
   color: var(--body-color);
-  background-image: url("https://i.postimg.cc/V6sMbKsF/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif");
-  background-image: url(https://i.postimg.cc/V6sMbKsF/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif);
+  background-image: url("https://i.postimg.cc/43PFSknN/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif");
+  background-image: url(https://i.postimg.cc/43PFSknN/Agonizing-Obvious-Hochstettersfrog-size-restricted.gif);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -309,7 +309,6 @@ body:before {
           animation: bottom 0.8s var(--delay) both;
           
 }
-
 .main-header {
   font-size: 30px;
   color: #fff;
@@ -344,14 +343,25 @@ body:before {
 }
 .main-blog__title {
   font-size: 25px;
-  max-width: 12ch;
+  max-width: 18ch;
   font-weight: 600;
   letter-spacing: 1px;
   color: #fff;
   margin-bottom: 30px;
 }
+
+.main-blog__title2 {
+  font-size: 65px;
+  max-width: 18ch;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 30px;
+  margin-left: 5%;
+}
+
 .main-blog {
-  background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png");
+  background-image: url("https://i.postimg.cc/g2JCb0FL/order.png");
   background-size: 80%;
   background-position-x: 150px;
   background-color: #31abbd;
@@ -369,8 +379,8 @@ body:before {
 .main-blog + .main-blog {
   margin-left: 20px;
   width: 35%;
-  background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg);
-  background-color: unset;
+  background-color: rgb(245, 184, 92);
+  background-image: url("https://i.postimg.cc/SNtZ873j/stock.png");
   background-position-x: 0;
   background-size: 139%;
   filter: saturate(1.4);
@@ -485,9 +495,25 @@ body:before {
 }
 .video-name {
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4em;
-  padding: 12px 20px 0;
+  padding: 10px 20px 0;
+  overflow: hidden;
+  background-color: var(--video-bg);
+  z-index: 9;
+  position: relative;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.video-name2 {
+  color: #fff;
+  font-size: 30px;
+  line-height: 1.4em;
+  text-align: right;
+  padding: 12px 16px 12px;
+  font-weight: 900;
   overflow: hidden;
   background-color: var(--video-bg);
   z-index: 9;
@@ -1179,7 +1205,7 @@ input[type="password"]::-webkit-input-placeholder {
 
 .select select[disabled], .taginput [disabled].taginput-container.is-focusable, [disabled].textarea, [disabled].input, fieldset[disabled] .select select, .select fieldset[disabled] select, fieldset[disabled] .taginput .taginput-container.is-focusable, .taginput fieldset[disabled] .taginput-container.is-focusable, fieldset[disabled] .textarea, fieldset[disabled] .input {
     background-color: rgba(21, 20, 26, 0.63);
-    border-color: rgb(255, 43, 43);
+    border-color: #424050;
     box-shadow: none;
     color: rgb(180, 180, 180);
   }
@@ -1259,4 +1285,8 @@ input[type="password"]::-webkit-input-placeholder {
   margin: 4px 2px 0px 2px;
   padding: 0 0.25em;
   z-index: 0;
+}
+
+.ft {
+  position: relative;
 }
