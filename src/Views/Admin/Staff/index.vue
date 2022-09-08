@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="main-container" style="width: 1000px;">
+      <div class="anim" style="--delay:0.2s;">
       <h1 style="text-align:center; font-size: 30px; color: white; margin-top: 2%; font-weight: 600;">User Management</h1>
       <br/><br/>
+      </div>
+      <div class="anim" style="--delay:0.2s;">
       <header class="card-header" style="background-color: rgba(21, 20, 26, 0.63); border-radius: 20px">
         <div class="card-header-title">
           <div class="card-header-title">
@@ -25,8 +28,16 @@
         </div>
         
       </header>
+      </div>
       <br/>
       <AllStaff ref="all_staff"/>
+
+      <div class="ft anim" style="--delay:0.3s; margin-top: 5%;">
+          <p style="text-align:center">
+            © 2022. EyePax Technologies. All Rights Reserved.
+          </p>
+      </div>
+      
     </div>
 
     </div>

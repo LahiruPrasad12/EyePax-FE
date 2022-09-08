@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar anim" style="--delay:0.1s;">
     <span class="logo">S</span>
     <a class="logo-expand" href="/" style="font-size:25px">EyePax</a>
     <p>TECHNOLOGIES</p>
