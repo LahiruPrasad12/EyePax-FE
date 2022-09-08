@@ -86,12 +86,13 @@
 
         </b-table>
         <create_order ref="create_order" @getAllItems="getAllItems" />
-        <!-- <edit_item ref="edit_item" @getAllItems="getAllItems"/> -->
+        <edit_order ref="edit_item" @getAllItems="getAllItems" />
     </div>
 </template>
   
 <script>
 import create_order from './CreateOrder';
+import edit_order from './EditOrder';
 import CustomerApis from '../../../apis/modules/customer_apis/customer_apis';
 import ToastMixin from "../../../mixins/ToastMixin";
 
@@ -99,7 +100,8 @@ export default {
     name: "index",
     mixins: [ToastMixin],
     components: {
-        create_order
+        create_order,
+        edit_order
     },
     data() {
         return {
