@@ -145,8 +145,8 @@
                                :type="errors[0]?'is-danger':''"
                                label="Conditions"
                       >
-                        <b-checkbox v-model="form.is_email_verified">Is Email Verified?</b-checkbox>
-                        <b-checkbox v-model="form.is_phone_verified">Is Phone Verified?</b-checkbox>
+                        <b-checkbox v-model="form.is_email_verified">Need Email Verification?</b-checkbox>
+                        <b-checkbox v-model="form.is_phone_verified">Need Phone Verification?</b-checkbox>
                       </b-field>
 
                     </validation-provider>

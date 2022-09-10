@@ -11,7 +11,7 @@
       trap-focus>
       <div class="card">
         <header class="card-header" style="font-weight:700; font-size: 20px; color: white;">
-          Update &nbsp;{{form.first_name}}'s' &nbsp;Details
+          Update &nbsp;{{form.first_name}}'s &nbsp;Details
         </header>
         <div class="card-content">
           <template>
@@ -114,7 +114,7 @@
                       </b-field>
                     </validation-provider>
                   </b-col>
-                  <b-col md="3">
+                  <b-col md="2">
                     <validation-provider
                       #default="{ errors }"
                       name="Gender"
@@ -135,7 +135,7 @@
                       </b-field>
                     </validation-provider>
                   </b-col>
-                  <b-col md="3">
+                  <b-col md="4">
                     <validation-provider
                       #default="{ errors }"
                       name="Conditions"
@@ -145,8 +145,8 @@
                                :type="errors[0]?'is-danger':''"
                                label="Conditions"
                       >
-                        <b-checkbox v-model="form.is_email_verified">Is Email Verified?</b-checkbox>
-                        <b-checkbox v-model="form.is_phone_verified">Is Phone Verified?</b-checkbox>
+                        <b-checkbox v-model="form.is_email_verified">Need Email Verification?</b-checkbox>
+                        <b-checkbox v-model="form.is_phone_verified">Need Phone Verification?</b-checkbox>
                       </b-field>
 
                     </validation-provider>
