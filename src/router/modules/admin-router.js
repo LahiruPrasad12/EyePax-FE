@@ -1,5 +1,6 @@
 import AdminHome from '../../Views/Admin/index'
 import AdminStaff from '../../Views/Admin/Staff/index'
+import Tracking from '../../Views/Admin/Tracking/index'
 import Store from '../../store/index'
 
 export default [
@@ -26,5 +27,10 @@ export default [
     //     next()
     //   }
     // }
+  },
+  {
+    path: '/admin/tracking',
+    name: 'index',
+    component: Tracking,
   }
 ]
