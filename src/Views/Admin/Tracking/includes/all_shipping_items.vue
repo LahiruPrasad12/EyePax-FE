@@ -50,11 +50,11 @@
           </template>
         </b-table-column>
 
-        <b-table-column field="action" label="Edit">
+        <b-table-column field="action" label="View More">
           <template v-slot="props">
             <b-tooltip label="Edit"
                        position="is-right" target="">
-              <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="editStaff(props.row)">
+              <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="updateState(props.row)">
                 <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16" style="color: #ff7551"
                      width="16" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -71,26 +71,19 @@
       </b-table>
     </div>
 
-    <create_staff ref="create_staff" @getAllStaff="getAllShippingItems"/>
-    <edit_staff ref="edit_staff" @getAllStaff="getAllShippingItems"/>
-    <!--    <createNotice ref="create_form"/>-->
-    <!--    <editeNotice ref="edit_form"/>-->
+    <update_state ref="update_state" @getAllStaff="getAllShippingItems"/>
+
   </div>
 </template>
 
 <script>
 import shippingItemApis from '../../../../apis/modules/admin_pais/shipping_item'
-import create_staff from "../../Staff/includes/create_staff";
-import edit_staff from "../../Staff/includes/edit_staff";
-import ToastMixin from "../../../../mixins/ToastMixin";
-import staff_apis from "../../../../apis/modules/admin_pais/staff_apis";
+import update_state from "../includes/update_state";
 
 export default {
   name: "all_shipping_items",
-  mixins:[ToastMixin],
   components: {
-    create_staff,
-    edit_staff
+    update_state,
   },
   data() {
     return {
@@ -146,6 +139,9 @@ export default {
       this.is_table_loading = false
     },
 
+    updateState(data){
+      this.$refs.update_state.openModal(data)
+    },
     closeModel() {
       this.getAllShippingItems(this.selected_status)
     },
