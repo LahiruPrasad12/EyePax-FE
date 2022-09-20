@@ -11,7 +11,7 @@
           <div class="card-header-title">
              <div style="font-size: 25px; color: white;">Users</div>
             <div class="search-bar">
-              <input type="text" placeholder="Search Users" style="margin-left:15%;"> 
+              <input type="text" placeholder="Search Users" style="margin-left:15%;">
             </div>
             <b-select v-model="selected_role" placeholder="Select a Role" style="margin-left: 5%;">
               <option value="" style="color: rgb(180, 180, 180);">Select role</option>
@@ -21,23 +21,31 @@
               <option value="stock-manager" style="color: rgb(180, 180, 180);">Stock Manager</option>
             </b-select>
             </div>
-          
+
           <div class="float-end">
           <b-button  type="is-success" @click="createStaff">Create User</b-button>
         </div>
         </div>
-        
+
       </header>
       </div>
       <br/>
-      <AllStaff ref="all_staff"/>
+      <b-tabs type="is-boxed">
+        <b-tab-item label="User Management">
+          <AllStaff ref="all_staff"/>
+        </b-tab-item>
+        <b-tab-item label="Role Management">
+          <update_staff_role ref="update_staff"/>
+        </b-tab-item>
+      </b-tabs>
+<!--      <AllStaff ref="all_staff"/>-->
 
       <div class="ft anim" style="--delay:0.3s; margin-top: 5%;">
           <p style="text-align:center">
             © 2022. EyePax Technologies. All Rights Reserved.
           </p>
       </div>
-      
+
     </div>
 
     </div>
@@ -45,10 +53,10 @@
 
 <script>
 import AllStaff from "./includes/AllStaff";
-
+import update_staff_role from "./includes/update_staff_role";
 export default {
   name: "index",
-  components: {AllStaff},
+  components: {AllStaff,update_staff_role},
   data(){
     return{
       selected_role:''
@@ -66,6 +74,7 @@ export default {
 
     filterUser(role){
       this.$refs.all_staff.getAllStaff(role)
+      this.$refs.update_staff.getAllStaff(role)
     }
   }
 }

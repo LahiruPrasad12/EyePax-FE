@@ -44,13 +44,12 @@ export default {
       try {
         await this.autoLogin()
       } catch(e) {
-        this.danger('Unauthenticated')
-        await this.$router.push('/')
+        // await this.$router.push('/')
       }
     }
   },
   mounted() {
-    if(this.currentUser == null){
+    if(localStorage.getItem('IsLoggedIn') == 'true' && this.currentUser == null){
       this.autoLoginUser()
     }
   }

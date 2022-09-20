@@ -8,7 +8,7 @@ import store from './store';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+import authController from './router/auth_router'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
@@ -18,11 +18,12 @@ Vue.use(IconsPlugin)
 Vue.use(Buefy)
 
 Vue.config.productionTip = false
-
+// authController.init(router, store);
 // custom validation
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { numeric, required, email, min, max } from 'vee-validate/dist/rules'
 import ToastMixin from "./mixins/ToastMixin";
+
 
 extend('numeric', numeric);
 
