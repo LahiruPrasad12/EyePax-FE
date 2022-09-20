@@ -66,7 +66,7 @@ export default {
       }catch (e) {
 
       }
-      this.is_btn_loading = true
+      this.is_btn_loading = false
 
     },
     closeModal() {
