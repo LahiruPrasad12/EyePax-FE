@@ -31,11 +31,11 @@
       </div>
       <br/>
       <b-tabs type="is-boxed">
-        <b-tab-item label="Pictures">
+        <b-tab-item label="User Management">
           <AllStaff ref="all_staff"/>
         </b-tab-item>
-        <b-tab-item label="Music">
-<!--          <AllStaff ref="all_staff"/>-->
+        <b-tab-item label="Role Management">
+          <update_staff_role ref="update_staff"/>
         </b-tab-item>
       </b-tabs>
 <!--      <AllStaff ref="all_staff"/>-->
@@ -53,10 +53,10 @@
 
 <script>
 import AllStaff from "./includes/AllStaff";
-
+import update_staff_role from "./includes/update_staff_role";
 export default {
   name: "index",
-  components: {AllStaff},
+  components: {AllStaff,update_staff_role},
   data(){
     return{
       selected_role:''
@@ -74,6 +74,7 @@ export default {
 
     filterUser(role){
       this.$refs.all_staff.getAllStaff(role)
+      this.$refs.update_staff.getAllStaff(role)
     }
   }
 }
