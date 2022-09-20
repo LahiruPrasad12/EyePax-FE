@@ -27,6 +27,7 @@ export default  new Vuex.Store({
         password : form.password
       }
       let respond = (await authAPI.login(payload)).data
+      localStorage.setItem("IsLoggedIn", 'true');
       localStorage.setItem("JWT", respond.token);
       commit('SET_CURRENT_USER',respond.data.user)
       if(respond.data.user.account_type === 'admin'){
@@ -43,15 +44,15 @@ export default  new Vuex.Store({
     async autoLogin({ commit }){
       let respond = (await authAPI.autologin()).data.data
       commit('SET_CURRENT_USER',respond)
-      if(respond.data.user.account_type === 'admin'){
-        await router.replace('/admin/home')
-      }else if(respond.data.user.account_type === 'supplier'){
-        await router.replace('/admin/home')
-      }else if(respond.data.user.account_type === 'staff'){
-        await router.replace('/admin/home')
-      }else if(respond.data.user.account_type === 'stock-manager'){
-        await router.replace('/admin/home')
-      }
+      // if(respond.account_type === 'admin'){
+      //   await router.replace('/admin/home')
+      // }else if(respond.account_type === 'supplier'){
+      //   await router.replace('/admin/home')
+      // }else if(respond.account_type === 'staff'){
+      //   await router.replace('/admin/home')
+      // }else if(respond.account_type === 'stock-manager'){
+      //   await router.replace('/admin/home')
+      // }
     },
   }
 })
