@@ -14,12 +14,12 @@
               <div class="search-bar">
                 <input placeholder="Search Items" style="margin-left:25%;" type="text">
               </div>
-              <b-select v-model="selected_role" placeholder="Select a Role" style="margin-left: 20%;">
-                <option style="color: rgb(180, 180, 180);" value="">Select role</option>
-                <option style="color: rgb(180, 180, 180);" value="admin">Admin</option>
-                <option style="color: rgb(180, 180, 180);" value="staff">Staff</option>
-                <option style="color: rgb(180, 180, 180);" value="supplier">Supplier</option>
-                <option style="color: rgb(180, 180, 180);" value="stock-manager">Stock Manager</option>
+              <b-select v-model="selected_status" placeholder="Select a Role" style="margin-left: 20%;">
+                <option style="color: rgb(180, 180, 180);" value="">Select status</option>
+                <option style="color: rgb(180, 180, 180);" value="draft">Draft</option>
+                <option style="color: rgb(180, 180, 180);" value="pending">Pending</option>
+                <option style="color: rgb(180, 180, 180);" value="shipped">Shipped</option>
+                <option style="color: rgb(180, 180, 180);" value="decline">Declined</option>
               </b-select>
             </div>
           </div>
@@ -49,21 +49,18 @@ export default {
   components: {All_Items},
   data() {
     return {
-      selected_role: ''
+      selected_status: ''
     }
   },
   watch: {
-    selected_role() {
-      this.filterUser(this.selected_role)
+    selected_status() {
+      this.filterUser(this.selected_status)
     }
   },
   methods: {
-    createStaff() {
-      this.$refs.all_items.$refs.create_staff.openModal()
-    },
 
-    filterUser(role) {
-      this.$refs.all_items.getAllStaff(role)
+    filterUser(status) {
+      this.$refs.all_items.getAllShippingItems(status)
     }
   }
 }
