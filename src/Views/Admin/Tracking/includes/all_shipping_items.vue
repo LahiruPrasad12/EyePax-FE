@@ -97,6 +97,8 @@
 import shippingItemApis from '../../../../apis/modules/admin_pais/shipping_item'
 import update_state from "../includes/update_state";
 import pdf from "../includes/pdf";
+import jspdf from "jspdf";
+import "jspdf-autotable"
 export default {
   name: "all_shipping_items",
   components: {
@@ -157,6 +159,45 @@ export default {
 
       }
       this.is_table_loading = false
+    },
+
+    generatePDF() {
+      const doc = new jspdf({
+        orientation: "portrait",
+        unit: "in",
+        format: "letter"
+      });
+      // const tableColumn = ["Item Code", "Shipping Status", "Quantity"];
+      const columns = [
+        { title: "#", dataKey: "id" },
+        { title: "Item Code", dataKey: "item_code" },
+        { title: "Shipping Status", dataKey: "status" },
+        { title: "Quantity", dataKey: "qty" }
+      ];
+      const tableRows = [];
+
+      this.shipping_items.slice(0).reverse().map(item => {
+        let addItem = {
+          id: item.id,
+          item_code: item.item_code,
+          status: item.status,
+          qty: item.qty
+        };
+        tableRows.push(addItem);
+      });
+
+      doc.autoTable({
+        columns,
+        body: tableRows,
+        margin: { left: 0.5, top: 1.25 }
+      });
+
+      const date = Date().split(" ");
+      const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+      doc.text("Shipping-Details-Report", 14, 15).setFontSize(12);
+      doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
+      doc.save(`Shipping-Details-Report_${dateStr}.pdf`);
+
     },
 
     updateState(data){

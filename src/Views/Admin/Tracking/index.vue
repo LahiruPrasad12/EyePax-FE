@@ -14,13 +14,17 @@
               <div class="search-bar">
                 <input placeholder="Search Items" style="margin-left:25%;" type="text">
               </div>
-              <b-select v-model="selected_status" placeholder="Select a Role" style="margin-left: 20%;">
+              <b-select v-model="selected_status" placeholder="Select a Role" style="margin-left: 5%;">
                 <option style="color: rgb(180, 180, 180);" value="">Select status</option>
                 <option style="color: rgb(180, 180, 180);" value="draft">Draft</option>
                 <option style="color: rgb(180, 180, 180);" value="pending">Pending</option>
                 <option style="color: rgb(180, 180, 180);" value="shipped">Shipped</option>
                 <option style="color: rgb(180, 180, 180);" value="decline">Declined</option>
               </b-select>
+
+            </div>
+            <div class="float-end">
+              <b-button type="is-success" @click="generate">Generate PDF</b-button>
             </div>
           </div>
 
@@ -43,6 +47,7 @@
 
 <script>
 import All_Items from "./includes/all_shipping_items";
+import jspdf from "jspdf";
 
 export default {
   name: "index",
@@ -61,7 +66,11 @@ export default {
 
     filterUser(status) {
       this.$refs.all_items.getAllShippingItems(status)
+    },
+    generate() {
+      this.$refs.all_items.generatePDF()
     }
+
   }
 }
 </script>
