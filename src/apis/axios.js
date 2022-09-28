@@ -10,6 +10,7 @@ if (localStorage.getItem('JWT')) {
   instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('JWT')}`;
 }
 
+// console.log(localStorage.getItem('JWT'))
 instance.interceptors.response.use(config => {
     return config;
   },
@@ -18,7 +19,7 @@ instance.interceptors.response.use(config => {
       localStorage.removeItem('JWT')
       localStorage.removeItem('IsLoggedIn')
       // ErrorMixins.methods.danger('Unauthenticated!!')
-      router.replace('/')
+      router.push("/")
     }
     return Promise.reject(error)
   })
