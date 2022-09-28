@@ -86,6 +86,7 @@ export default {
   mixins: [ToastMixin],
   data() {
     return {
+      currentState : '',
       is_selection_loading: false,
       isLoading: true,
       isFullPage: false,
@@ -99,15 +100,25 @@ export default {
         qty: '',
         status: '',
         address: '',
-        item_code: ''
+        item_code: '',
+        _id:''
       }
     }
+  },
+  watch:{
+  'form.status'(val){
+    if(val){
+      this.is_selection_loading = true
+      this.updateState(val)
+    }
+  }
   },
 
   methods: {
     openModal(data) {
       this.is_create_staff_modal_active = !this.is_create_staff_modal_active
       this.form = data
+      this.currentState = data.status
       this.getItemData()
     },
 
@@ -120,6 +131,22 @@ export default {
       this.isLoading = false
     },
 
+    async updateState(data){
+      try{
+        if(this.currentState !== data){
+          let payload = {
+            status: data
+          }
+         let respond = await shipping_itemApis.UpdateShippingItems(this.form._id, payload)
+            this.is_selection_loading = false
+            // this.$emit('updateState')
+           this.success('State Updated')
+        }
+      }catch (e) {
+
+      }
+      this.is_selection_loading = false
+    },
 
     closeModal() {
       this.$parent.closeModel()

@@ -50,7 +50,7 @@
           </template>
         </b-table-column>
 
-        <b-table-column field="action" label="View More">
+        <b-table-column field="action1" label="View More">
           <template v-slot="props">
             <b-tooltip label="Edit"
                        position="is-right" target="">
@@ -67,23 +67,38 @@
             </b-tooltip>
           </template>
         </b-table-column>
+        <b-table-column field="action2" label="Get PDF">
+          <template v-slot="props">
+            <b-tooltip label="PDF"
+                       position="is-right" target="">
+              <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="getPDF(props.row)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
+                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                </svg>
+              </b-button>
+            </b-tooltip>
+          </template>
+        </b-table-column>
 
       </b-table>
     </div>
 
     <update_state ref="update_state" @getAllStaff="getAllShippingItems"/>
-
+    <pdf ref="pdf" @getAllStaff="getAllShippingItems"/>
   </div>
 </template>
 
 <script>
 import shippingItemApis from '../../../../apis/modules/admin_pais/shipping_item'
 import update_state from "../includes/update_state";
-
+import pdf from "../includes/pdf";
+import jspdf from "jspdf";
+import "jspdf-autotable"
 export default {
   name: "all_shipping_items",
   components: {
-    update_state,
+    update_state,pdf
   },
   data() {
     return {
@@ -122,6 +137,9 @@ export default {
     }
   },
   methods: {
+    check(){
+      alert('hello')
+    },
     async getAllShippingItems(status) {
       try {
         this.is_table_loading = true
@@ -139,8 +157,50 @@ export default {
       this.is_table_loading = false
     },
 
+    generatePDF() {
+      const doc = new jspdf({
+        orientation: "portrait",
+        unit: "in",
+        format: "letter"
+      });
+      // const tableColumn = ["Item Code", "Shipping Status", "Quantity"];
+      const columns = [
+        { title: "#", dataKey: "id" },
+        { title: "Item Code", dataKey: "item_code" },
+        { title: "Shipping Status", dataKey: "status" },
+        { title: "Quantity", dataKey: "qty" }
+      ];
+      const tableRows = [];
+
+      this.shipping_items.slice(0).reverse().map(item => {
+        let addItem = {
+          id: item.id,
+          item_code: item.item_code,
+          status: item.status,
+          qty: item.qty
+        };
+        tableRows.push(addItem);
+      });
+
+      doc.autoTable({
+        columns,
+        body: tableRows,
+        margin: { left: 0.5, top: 1.25 }
+      });
+
+      const date = Date().split(" ");
+      const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+      doc.text("Shipping-Details-Report", 14, 15).setFontSize(12);
+      doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
+      doc.save(`Shipping-Details-Report_${dateStr}.pdf`);
+
+    },
+
     updateState(data){
       this.$refs.update_state.openModal(data)
+    },
+    getPDF(data){
+      this.$refs.pdf.openModal(data)
     },
     closeModel() {
       this.getAllShippingItems(this.selected_status)

@@ -1,6 +1,6 @@
 <template>
   <div>
-  
+
   <div class="main-container anim" style="--delay:0.2s;">
     <br/><br/><br/>
     <img src="https://i.postimg.cc/4NB31nQY/Eyepax-logo.png"/>
@@ -48,7 +48,7 @@
 <script>
 import {ValidationObserver, ValidationProvider} from 'vee-validate'
 import ToastMixin from "../../mixins/ToastMixin";
-import {mapActions} from 'vuex'
+import {mapActions,mapGetters} from 'vuex'
 export default {
   name: "login",
   components: {
@@ -65,6 +65,9 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters(['currentUser'])
+  },
 
   methods: {
     ...mapActions(['login']),
@@ -79,6 +82,11 @@ export default {
         this.danger('Your username or password is incorrect')
       }
       this.is_btn_loading = false
+    }
+  },
+  mounted() {
+    if(this.currentUser != null){
+      this.$router.push('/admin/home')
     }
   }
 
