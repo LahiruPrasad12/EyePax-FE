@@ -12,7 +12,7 @@
      <div class="author-info">Live Count</div>
     </div>
    </div>
-   
+
   </div>
   <div class="main-blog anim" style="--delay: .2s">
      <div class="main-blog__title">TOTAL STOCK</div>
@@ -39,7 +39,7 @@
    <div class="video-name2">05</div>
   </div>
   <div class="video anim" style="--delay: .5s">
-   
+
    <div class="video-wrapper">
      <img src="https://i.postimg.cc/Qtk5bhM0/staff-c.jpg" type="">
     <div class="author-img__wrapper video-author">
@@ -54,7 +54,7 @@
    <div class="video-name2">10</div>
   </div>
   <div class="video anim" style="--delay: .6s">
-   
+
    <div class="video-wrapper">
     <img src="https://i.postimg.cc/RV3hCvzy/item.jpg" type="">
     <div class="author-img__wrapper video-author">
@@ -69,7 +69,7 @@
    <div class="video-name2">75</div>
   </div>
   <div class="video anim" style="--delay: .7s">
-   
+
    <div class="video-wrapper">
     <img src="https://i.postimg.cc/nh2h0rKs/de.jpg" type="">
     <div class="author-img__wrapper video-author">
@@ -94,6 +94,7 @@
 </template>
 
 <script>
+import {mapActions,mapGetters} from 'vuex'
 export default {
   name: "admin_home",
   data(){
@@ -102,7 +103,15 @@ export default {
       total_shipping:0,
 
     }
-  }
+  },
+  async mounted() {
+    console.log('Component mounted.');
+    console.log(localStorage.getItem('JWT'))
+    await this.autoLogin()
+  },
+  methods: {
+    ...mapActions(['autoLogin'])
+  },
 }
 </script>
 
