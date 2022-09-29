@@ -1,6 +1,7 @@
 <template>
 
-  <div class="container">
+  <div>
+    <div class="anim" style="--delay:0.2s;">
     <b-table
       ref="staffTable"
       :data="staff"
@@ -38,6 +39,16 @@
           {{ props.row.email }}
         </template>
       </b-table-column>
+      <b-table-column field="account_type" label="Role">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ column.label }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.account_type }}
+        </template>
+      </b-table-column>
       <b-table-column field="DOB" label="DOB">
         <template v-slot:header="{ column }">
           <b-tooltip :label="column.label" append-to-body dashed>
@@ -63,8 +74,8 @@
         <template v-slot="props">
           <b-tooltip label="Edit"
                      position="is-right" target="">
-            <b-button outlined style="border: hidden" @click="editStaff(props.row)">
-              <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16"
+            <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="editStaff(props.row)">
+              <svg class="bi bi-pencil-square" fill="currentColor" height="16" viewBox="0 0 16 16" style="color: #ff7551"
                    width="16" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -81,8 +92,8 @@
         <template v-slot="props">
           <b-tooltip label="Delete"
                      position="is-right" target="">
-            <b-button outlined style="border: hidden" @click="confirmCustomDelete(props.row)">
-              <svg class="bi bi-trash-fill" fill="red" height="16" viewBox="0 0 16 16" width="16"
+            <b-button outlined style="border: hidden; background-color: #1f1d2b;" @click="confirmCustomDelete(props.row)">
+              <svg class="bi bi-trash-fill" fill="red" height="16" viewBox="0 0 16 16" width="16" style="color: rgb(252, 72, 72)"
                    xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
@@ -91,8 +102,9 @@
           </b-tooltip>
         </template>
       </b-table-column>
-
     </b-table>
+    </div>
+
     <create_staff ref="create_staff" @getAllStaff="getAllStaff"/>
     <edit_staff ref="edit_staff" @getAllStaff="getAllStaff"/>
     <!--    <createNotice ref="create_form"/>-->
@@ -133,6 +145,10 @@ export default {
           label: 'Email',
         },
         {
+          field: 'Role',
+          label: 'account_type',
+        },
+        {
           field: 'DOB',
           label: 'Date OF Birth',
         },
@@ -165,7 +181,7 @@ export default {
           first_name: e.first_name,
           last_name: e.last_name,
           email: e.email,
-          DOB: new Date(e.DOB),
+          DOB: e.DOB.substring(0, 10),
           mobile: e.mobile,
           account_type: e.account_type,
           gender: e.gender,
@@ -192,8 +208,8 @@ export default {
 
     confirmCustomDelete(data) {
       this.$buefy.dialog.confirm({
-        title: 'Deleting account',
-        message: 'Are you sure you want to <b>delete</b> your account? This action cannot be undone.',
+        title: 'Deleting Account',
+        message: 'Are you sure you want to <b style="color:white;">Delete</b> your account? This action cannot be undone.',
         confirmText: 'Delete Account',
         type: 'is-danger',
         hasIcon: true,

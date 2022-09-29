@@ -1,47 +1,46 @@
 <template>
-  <div class="container is-max-desktop">
-
-    <header class="card-header">
-      <div class="card-header-title">
-        <div class="float-start">
-          <b-field class="mt-2">
-            <b-select v-model="selected_role" placeholder="Select a role">
-              <option value="">Select role</option>
-              <option value="admin">Admin</option>
-              <option value="staff">Staff</option>
-              <option value="stock-manager">Stock manager</option>
-            </b-select>
-          </b-field>
-        </div>
-        <div style="margin-left: 70%" class="float-end">
-          <b-button  type="is-success" @click="createStaff">Create Staff</b-button>
-        </div>
+  <div>
+    <div class="main-container" style="width: 1000px;">
+      <div class="anim" style="--delay:0.2s;">
+      <h1 style="text-align:center; font-size: 30px; color: white; margin-top: 2%; font-weight: 600;">User Management</h1>
+      <br/><br/>
       </div>
-    </header>
+      <div class="anim" style="--delay:0.2s;">
+      <header class="card-header" style="background-color: rgba(21, 20, 26, 0.63); border-radius: 20px">
+        <div class="card-header-title">
+          <div class="card-header-title">
+             <div style="font-size: 25px; color: white;">Users</div>
+            <div class="search-bar">
+              <input type="text" placeholder="Search Users" style="margin-left:15%;"> 
+            </div>
+            <b-select v-model="selected_role" placeholder="Select a Role" style="margin-left: 5%;">
+              <option value="" style="color: rgb(180, 180, 180);">Select role</option>
+              <option value="admin" style="color: rgb(180, 180, 180);">Admin</option>
+              <option value="staff" style="color: rgb(180, 180, 180);">Staff</option>
+              <option value="supplier" style="color: rgb(180, 180, 180);">Supplier</option>
+              <option value="stock-manager" style="color: rgb(180, 180, 180);">Stock Manager</option>
+            </b-select>
+            </div>
+          
+          <div class="float-end">
+          <b-button  type="is-success" @click="createStaff">Create User</b-button>
+        </div>
+        </div>
+        
+      </header>
+      </div>
+      <br/>
+      <AllStaff ref="all_staff"/>
 
-    <div style="margin-left: 86%">
+      <div class="ft anim" style="--delay:0.3s; margin-top: 5%;">
+          <p style="text-align:center">
+            © 2022. EyePax Technologies. All Rights Reserved.
+          </p>
+      </div>
+      
+    </div>
 
     </div>
-    <section>
-      <div class="card mt-5">
-        <div class="card-content">
-          <div class="content">
-            <b-tabs v-model="activeTab" type="is-boxed">
-              <b-tab-item label="User Management">
-                <AllStaff ref="all_staff"/>
-              </b-tab-item>
-
-              <b-tab-item label="Role Management">
-                
-              </b-tab-item>
-            </b-tabs>
-          </div>
-        </div>
-      </div>
-
-
-    </section>
-  </div>
 </template>
 
 <script>

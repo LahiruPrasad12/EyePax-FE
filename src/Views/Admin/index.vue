@@ -1,95 +1,96 @@
 <template>
-  <div class="container is-max-desktop mb-5">
-    <header>
-<!--      <h1>Admin Dashboard</h1>-->
-    </header>
-    <b-row style="margin-left: 10%;">
-      <b-col  style="width: 35%;" md="6">
-        <div style="background-color: cornflowerblue" class="card">
-          <div class="card-content">
-            <div class="content">
-                <b-row>
-                  <b-col md="10">
-                    <h1>Total Staff</h1>
-                  </b-col>
-                  <b-col md="2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                      <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                    </svg>
-                  </b-col>
-                  <div style="text-align: center;font-size: 400%; margin-top: -5%">76</div>
-                </b-row>
-
-
-            </div>
-          </div>
-        </div>
-      </b-col>
-      <b-col style="width: 35%; margin-left: 5%" md="6">
-        <div style="background-color: palevioletred" class="card">
-          <div class="card-content">
-            <div class="content">
-              <b-row>
-                <b-col md="10">
-                  <h1>Total Staff</h1>
-                </b-col>
-                <b-col md="2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                    <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                  </svg>
-                </b-col>
-                <div style="text-align: center;font-size: 400%; margin-top: -5%">76</div>
-              </b-row>
-
-
-            </div>
-          </div>
-        </div>
-      </b-col>
-      <b-col style="width: 35%;" class="mt-4" md="6">
-        <div style="background-color: chocolate" class="card">
-          <div class="card-content">
-            <div class="content">
-              <b-row>
-                <b-col md="10">
-                  <h1>Total Staff</h1>
-                </b-col>
-                <b-col md="2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                    <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                  </svg>
-                </b-col>
-                <div style="text-align: center;font-size: 400%; margin-top: -5%">76</div>
-              </b-row>
-
-
-            </div>
-          </div>
-        </div>
-      </b-col>
-      <b-col style="width: 35%; margin-left: 5%" class="mt-4" md="6">
-        <div  style="background-color: lemonchiffon" class="card">
-          <div class="card-content">
-            <div class="content">
-              <b-row>
-                <b-col md="10">
-                  <h1>Total Staff</h1>
-                </b-col>
-                <b-col md="2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                    <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                  </svg>
-                </b-col>
-                <div style="text-align: center;font-size: 400%; margin-top: -5%">76</div>
-              </b-row>
-
-
-            </div>
-          </div>
-        </div>
-      </b-col>
-    </b-row>
+  <div class="">
+<div class="main-container">
+ <div class="main-header anim" style="--delay: 0s">Overview</div>
+ <div class="main-blogs">
+  <div class="main-blog anim" style="--delay: .1s">
+   <div class="main-blog__title">TOTAL ORDERS</div>
+   <div class="main-blog__title2">54</div>
+   <div class="main-blog__author">
+    <div class="author-detail">
+     <div class="author-name">Order Management</div>
+     <div class="author-info">Live Count</div>
+    </div>
+   </div>
+   
   </div>
+  <div class="main-blog anim" style="--delay: .2s">
+     <div class="main-blog__title">TOTAL STOCK</div>
+     <div class="main-blog__title2">80</div>
+     <div class="main-blog__author tips">
+      <div class="author-detail">
+       <div class="author-name">Stock Management</div>
+       <div class="author-info">Live Count</div>
+ </div></div></div></div>
+ <div class="small-header anim" style="--delay: .3s">Analytics</div>
+ <div class="videos">
+  <div class="video anim" style="--delay: .4s">
+   <div class="video-wrapper">
+    <img src="https://i.postimg.cc/50HTYKN4/sup.jpg" type="">
+    <div class="author-img__wrapper video-author">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+      <path d="M20 6L9 17l-5-5" />
+     </svg>
+     <img class="author-img" src="https://i.postimg.cc/cHX7WdN6/sup2.jpg" />
+    </div>
+   </div>
+   <div class="video-by">Supplier Management</div>
+   <div class="video-name">TOTAL SUPPLIERS</div>
+   <div class="video-name2">05</div>
+  </div>
+  <div class="video anim" style="--delay: .5s">
+   
+   <div class="video-wrapper">
+     <img src="https://i.postimg.cc/Qtk5bhM0/staff-c.jpg" type="">
+    <div class="author-img__wrapper video-author">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+      <path d="M20 6L9 17l-5-5" />
+     </svg>
+     <img class="author-img" src="https://i.postimg.cc/0Nv7Jzkb/staff2.jpg" />
+    </div>
+   </div>
+   <div class="video-by">User Management</div>
+   <div class="video-name">TOTAL STAFF</div>
+   <div class="video-name2">10</div>
+  </div>
+  <div class="video anim" style="--delay: .6s">
+   
+   <div class="video-wrapper">
+    <img src="https://i.postimg.cc/RV3hCvzy/item.jpg" type="">
+    <div class="author-img__wrapper video-author">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+      <path d="M20 6L9 17l-5-5" />
+     </svg>
+     <img class="author-img" src="https://i.postimg.cc/tRcPNSR0/item2.jpg" />
+    </div>
+   </div>
+   <div class="video-by">Supplier Management</div>
+   <div class="video-name">TOTAL ITEMS</div>
+   <div class="video-name2">75</div>
+  </div>
+  <div class="video anim" style="--delay: .7s">
+   
+   <div class="video-wrapper">
+    <img src="https://i.postimg.cc/nh2h0rKs/de.jpg" type="">
+    <div class="author-img__wrapper video-author">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+      <path d="M20 6L9 17l-5-5" />
+     </svg>
+     <img class="author-img" src="https://i.postimg.cc/pT69krHQ/de2.jpg" />
+    </div>
+   </div>
+   <div class="video-by">DELIVERY Management</div>
+   <div class="video-name">TOTAL SHIPMENTS</div>
+   <div class="video-name2">24</div>
+  </div>
+ </div>
+</div>
+      <div class="ft anim" style="--delay:0.3s; margin-bottom: 1%;">
+          <p style="text-align:center">
+            © 2022. EyePax Technologies. All Rights Reserved.
+          </p>
+      </div>
+</div>
 </template>
 
 <script>

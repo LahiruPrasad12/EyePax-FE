@@ -10,8 +10,8 @@
       has-modal-card
       trap-focus>
       <div class="card">
-        <header class="card-header">
-          Update {{form.first_name}}'s details
+        <header class="card-header" style="font-weight:700; font-size: 20px; color: white;">
+          Update &nbsp;{{form.first_name}}'s' &nbsp;Details
         </header>
         <div class="card-content">
           <template>
@@ -88,12 +88,12 @@
                         :message="errors[0]"
                         :type="errors[0]?'is-danger':''"
                         label="Role">
-                        <b-select v-model="form.account_type" placeholder="Select a character">
-                          <option value="">None</option>
-                          <option value="staff">Staff</option>
-                          <option value="admin">admin</option>
-                          <option value="supplier">supplier</option>
-                          <option value="stock-manager">Stock Manager</option>
+                        <b-select v-model="form.account_type" placeholder="Select a role">
+                          <option value="" style="color: rgb(180, 180, 180);">Select a role</option>
+                          <option value="staff" style="color: rgb(180, 180, 180);">Staff</option>
+                          <option value="admin" style="color: rgb(180, 180, 180);">Admin</option>
+                          <option value="supplier" style="color: rgb(180, 180, 180);">Supplier</option>
+                          <option value="stock-manager" style="color: rgb(180, 180, 180);">Stock Manager</option>
                         </b-select>
                       </b-field>
                     </validation-provider>
@@ -108,19 +108,9 @@
                         :message="errors[0]"
                         :type="errors[0]?'is-danger':''"
                         label="DOB">
-                        <b-datepicker
-                          v-model="form.DOB"
-                          :icon-right="selected ? 'close-circle' : ''"
-                          :show-week-number="showWeekNumber"
-                          append-to-body
-                          close-on-click
-                          icon="calendar-today"
-                          icon-right-clickable
-                          locale="locale"
-                          open-on-focus
-                          placeholder="Click to select..."
-                          trap-focus>
-                        </b-datepicker>
+                        <b-input v-model="form.DOB"
+                                 type="date">
+                        </b-input>
                       </b-field>
                     </validation-provider>
                   </b-col>
@@ -130,7 +120,7 @@
                       name="Gender"
                       rules="required"
                     >
-                      <b-field label="Material">
+                      <b-field label="Gender">
                         <b-radio v-model="form.gender"
                                  native-value="male">
                           male

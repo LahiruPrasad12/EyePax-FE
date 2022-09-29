@@ -10,8 +10,8 @@
       has-modal-card
       trap-focus>
       <div class="card">
-        <header class="card-header" style="font-weight:700">
-          Update Item Details
+        <header class="card-header" style="font-weight:700; font-size: 20px; color: white;">
+          Update &nbsp;{{form.item_code}}'s' &nbsp;Details
         </header>
         <div class="card-content">
           <template>
@@ -87,7 +87,7 @@
                         :type="errors[0]?'is-danger':'is-success'"
                         label="Description">
                         <b-textarea v-model="form.description"
-                                 maxlength="1000" placeholder="e.g. Lorem Ipsum is simply dummy text of the printing and typesetting industry...." type="text" style="height:100px">
+                                 maxlength="1000" placeholder="e.g. Lorem Ipsum is simply dummy text of the printing and typesetting industry...." type="text" style="height:100px; background-color: #1f1d2b; color: rgb(180, 180, 180); border-color: #424050;">
                         </b-textarea>
                       </b-field>
                     </validation-provider>
