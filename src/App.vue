@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted() {
-    if(localStorage.getItem('IsLoggedIn') == 'true' && this.currentUser == null){
+    if(localStorage.getItem('IsLoggedIn') === 'true' && this.currentUser == null){
       this.autoLoginUser()
     }
   }

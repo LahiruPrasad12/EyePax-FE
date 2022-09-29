@@ -7,7 +7,8 @@ import customer_router from "./modules/customer-router";
 import stock_router from "./modules/stock-manager-router";
 
 Vue.use(Router)
-
+// import {  createWebHashHistory } from 'vue-router'
 export default new Router({
+  mode: 'history',
   routes: [...auth_router, ...admin_router, ...supplier_router, ...customer_router, ...stock_router]
 })

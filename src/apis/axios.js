@@ -5,12 +5,10 @@ import ErrorMixins from '../mixins/ToastMixin'
 const instance = axios.create({
   baseURL: 'http://localhost:5000'
 });
-
 if (localStorage.getItem('JWT')) {
   instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('JWT')}`;
 }
 
-// console.log(localStorage.getItem('JWT'))
 instance.interceptors.response.use(config => {
     return config;
   },
@@ -19,7 +17,7 @@ instance.interceptors.response.use(config => {
       localStorage.removeItem('JWT')
       localStorage.removeItem('IsLoggedIn')
       // ErrorMixins.methods.danger('Unauthenticated!!')
-      router.push("/")
+      window.location = '/'
     }
     return Promise.reject(error)
   })

@@ -31,7 +31,7 @@ export default  new Vuex.Store({
       localStorage.setItem("JWT", respond.token);
       commit('SET_CURRENT_USER',respond.data.user)
       if(respond.data.user.account_type === 'admin'){
-        await router.replace('/admin/home')
+        window.location = '/admin/home'
       }else if(respond.data.user.account_type === 'supplier'){
         await router.replace('/admin/home')
       }else if(respond.data.user.account_type === 'staff'){
@@ -54,5 +54,12 @@ export default  new Vuex.Store({
       //   await router.replace('/admin/home')
       // }
     },
+
+    async logout({ commit }){
+      localStorage.removeItem("IsLoggedIn");
+      localStorage.removeItem("JWT");
+      commit('SET_CURRENT_USER',null)
+      await router.replace('/')
+    }
   }
 })

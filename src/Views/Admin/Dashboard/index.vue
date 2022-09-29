@@ -27,8 +27,17 @@
 </template>
 
 <script>
+import {mapActions,mapGetters} from 'vuex'
 export default {
-  name: "index"
+  name: "index",
+  methods: {
+    ...mapActions(['autoLogin'])
+  },
+
+  mounted() {
+    console.log('ava');
+    console.log(localStorage.getItem('JWT'))
+  }
 }
 </script>
 
