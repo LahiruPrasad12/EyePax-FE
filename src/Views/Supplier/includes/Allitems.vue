@@ -75,7 +75,7 @@
             </b-tooltip>
           </template>
           <template v-slot="props">
-            {{ props.row.enabled?"Enabled":"Disabled" }}
+            {{ props.row.enabled?"Active":"Deactive" }}
           </template>
         </b-table-column>
 
@@ -124,6 +124,8 @@
   import create_item from "./create_item";
   import edit_item from "./edit_item";
   import ToastMixin from "../../../mixins/ToastMixin";
+  import jspdf from "jspdf";
+  import "jspdf-autotable"
   
   export default {
     name: "index",
@@ -134,11 +136,13 @@
     },
     data() {
       return {
+        selected_status: undefined,
         fields: [
           {
             field: 'item_code',
             label: 'Item Code',
-            width: '40'
+            width: '40',
+            numeric: true
           },
           {
             field: 'name',
@@ -170,11 +174,16 @@
       }
     },
 
+    watch: {
+    selected_status() {
+      this.getAllItems(this.selected_status)
+    }
+    },
     methods: {
-      async getAllItems() {
+      async getAllItems(status) {
         try {
           this.is_table_loading = true
-          let respond = (await SupplierApis.getAllItems()).data.data.items
+          let respond = (await SupplierApis.getAllItems(status)).data.data.items
           this.item = respond.map((e, index) => ({
             id: index + 1,
             _id:e._id,
@@ -192,9 +201,56 @@
         }
         this.is_table_loading = false
       },
+
+      generatePDF() {
+      const doc = new jspdf({
+        orientation: "portrait",
+        unit: "in",
+        format: "letter"
+      });
+
+      const columns = [
+        { title: "#", dataKey: "id" },
+        { title: "Item Code", dataKey: "item_code" },
+        { title: "Item Name", dataKey: "name" },
+        { title: "Quantity", dataKey: "qty" },
+        { title: "Brand", dataKey: "brand" },
+        { title: "Price", dataKey: "price" },
+        { title: "Active Status", dataKey: "enabled" },
+        { title: "Created At", dataKey: "created_at" }
+      ];
+      const tableRows = [];
+
+      this.item.slice(0).map(item => {
+        let addItem = {
+          id: item.id,
+          item_code: item.item_code,
+          name: item.name,
+          qty: item.qty,
+          brand: item.brand,
+          price: item.price,
+          enabled: item.enabled?"Active":"Deactive",
+          created_at: item.created_at
+        };
+        tableRows.push(addItem);
+      });
+
+      doc.autoTable({
+        columns,
+        body: tableRows,
+        margin: { left: 0.5, top: 1.25 }
+      });
+
+      const date = Date().split(" ");
+      const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+      doc.text("Item-Details-Report", 14, 15).setFontSize(100);
+      doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
+      doc.save(`Item-Details-Report_${dateStr}.pdf`);
+
+    },
   
       closeModel() {
-        this.getAllItems()
+        this.getAllItems(this.selected_status)
       },
   
       editItem(data) {
@@ -228,7 +284,7 @@
     },
   
     async mounted() {
-      await this.getAllItems()
+      await this.getAllItems(this.selected_status)
     }
   }
   </script>

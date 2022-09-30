@@ -6,13 +6,7 @@
     <div class="side-wrapper">
       <div class="side-title">MENU</div>
       <div class="side-menu">
-        <a class="sidebar-link discover is-active" disabled href="/admin/home">
-          <svg fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M9.135 20.773v-3.057c0-.78.637-1.414 1.423-1.414h2.875c.377 0 .74.15 1.006.414.267.265.417.625.417 1v3.057c-.002.325.126.637.356.867.23.23.544.36.87.36h1.962a3.46 3.46 0 002.443-1 3.41 3.41 0 001.013-2.422V9.867c0-.735-.328-1.431-.895-1.902l-6.671-5.29a3.097 3.097 0 00-3.949.072L3.467 7.965A2.474 2.474 0 002.5 9.867v8.702C2.5 20.464 4.047 22 5.956 22h1.916c.68 0 1.231-.544 1.236-1.218l.027-.009z"/>
-          </svg>
-          Dashboard
-        </a>
+        
         <a v-if="currentUser && currentUser.account_type === 'staff'" class="sidebar-link trending"
            href="/#/customer/home">
           <svg fill="currentColor" viewBox="0 0 24 24">
@@ -29,14 +23,28 @@
           </svg>
           Stock
         </a>
-        <a v-if="currentUser && currentUser.account_type === 'supplier'" class="sidebar-link"
-           href="/#/supplier/home">
+        <a v-if="currentUser && currentUser.account_type === 'supplier'" class="sidebar-link" @click="$router.push('/supplier/home')">
           <svg fill="currentColor" viewBox="0 0 24 24">
             <path clip-rule="evenodd"
                   d="M12.1535 16.64L14.995 13.77C15.2822 13.47 15.2822 13 14.9851 12.71C14.698 12.42 14.2327 12.42 13.9455 12.71L12.3713 14.31V9.49C12.3713 9.07 12.0446 8.74 11.6386 8.74C11.2327 8.74 10.896 9.07 10.896 9.49V14.31L9.32178 12.71C9.03465 12.42 8.56931 12.42 8.28218 12.71C7.99505 13 7.99505 13.47 8.28218 13.77L11.1139 16.64C11.1832 16.71 11.2624 16.76 11.3515 16.8C11.4406 16.84 11.5396 16.86 11.6386 16.86C11.7376 16.86 11.8267 16.84 11.9158 16.8C12.005 16.76 12.0842 16.71 12.1535 16.64ZM19.3282 9.02561C19.5609 9.02292 19.8143 9.02 20.0446 9.02C20.302 9.02 20.5 9.22 20.5 9.47V17.51C20.5 19.99 18.5 22 16.0446 22H8.17327C5.58911 22 3.5 19.89 3.5 17.29V6.51C3.5 4.03 5.4901 2 7.96535 2H13.2525C13.5 2 13.7079 2.21 13.7079 2.46V5.68C13.7079 7.51 15.1931 9.01 17.0149 9.02C17.4333 9.02 17.8077 9.02318 18.1346 9.02595C18.3878 9.02809 18.6125 9.03 18.8069 9.03C18.9479 9.03 19.1306 9.02789 19.3282 9.02561ZM19.6045 7.5661C18.7916 7.5691 17.8322 7.5661 17.1421 7.5591C16.047 7.5591 15.145 6.6481 15.145 5.5421V2.9061C15.145 2.4751 15.6629 2.2611 15.9579 2.5721C16.7203 3.37199 17.8873 4.5978 18.8738 5.63395C19.2735 6.05379 19.6436 6.44249 19.945 6.7591C20.2342 7.0621 20.0223 7.5651 19.6045 7.5661Z"
                   fill-rule="evenodd"/>
           </svg>
-          Supplier
+          Item Management
+        </a>
+        <a v-if="currentUser && currentUser.account_type === 'supplier'" class="sidebar-link" @click="$router.push('/supplier/request')">
+           <svg fill="currentColor" viewBox="0 0 24 24">
+            <path clip-rule="evenodd"
+                  d="M7.33 2h9.34c3.4 0 5.32 1.93 5.33 5.33v9.34c0 3.4-1.93 5.33-5.33 5.33H7.33C3.93 22 2 20.07 2 16.67V7.33C2 3.93 3.93 2 7.33 2zm4.72 15.86c.43 0 .79-.32.83-.75V6.92a.815.815 0 00-.38-.79.84.84 0 00-1.28.79v10.19c.05.43.41.75.83.75zm4.6 0c.42 0 .78-.32.83-.75v-3.28a.839.839 0 00-1.28-.79.806.806 0 00-.38.79v3.28c.04.43.4.75.83.75zm-8.43-.75a.827.827 0 01-.83.75c-.43 0-.79-.32-.83-.75V10.2a.84.84 0 01.39-.79c.27-.17.61-.17.88 0s.42.48.39.79v6.91z"
+                  fill-rule="evenodd"/>
+          </svg>
+          Supply Requests
+        </a>
+        <a v-if="currentUser && currentUser.account_type === 'admin'" class="sidebar-link discover is-active" @click="$router.push('/admin/home')">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M9.135 20.773v-3.057c0-.78.637-1.414 1.423-1.414h2.875c.377 0 .74.15 1.006.414.267.265.417.625.417 1v3.057c-.002.325.126.637.356.867.23.23.544.36.87.36h1.962a3.46 3.46 0 002.443-1 3.41 3.41 0 001.013-2.422V9.867c0-.735-.328-1.431-.895-1.902l-6.671-5.29a3.097 3.097 0 00-3.949.072L3.467 7.965A2.474 2.474 0 002.5 9.867v8.702C2.5 20.464 4.047 22 5.956 22h1.916c.68 0 1.231-.544 1.236-1.218l.027-.009z"/>
+          </svg>
+          Dashboard
         </a>
         <a v-if="currentUser && currentUser.account_type === 'admin'" class="sidebar-link" @click="$router.push('/admin/staff')">
           <svg class="bi bi-people" fill="currentColor" height="32" viewBox="0 0 16 16" width="32"
