@@ -30,7 +30,7 @@
       </header>
       </div>
       <br/>
-      <b-tabs type="is-boxed">
+      <b-tabs type="is-boxed anim" style="--delay:0.2s;">
         <b-tab-item label="User Management">
           <AllStaff ref="all_staff"/>
         </b-tab-item>

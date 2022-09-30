@@ -33,7 +33,7 @@ export default  new Vuex.Store({
       if(respond.data.user.account_type === 'admin'){
         window.location = '/admin/home'
       }else if(respond.data.user.account_type === 'supplier'){
-        await router.replace('/admin/home')
+        window.location = '/supplier/home'
       }else if(respond.data.user.account_type === 'staff'){
         await router.replace('/admin/home')
       }else if(respond.data.user.account_type === 'stock-manager'){
