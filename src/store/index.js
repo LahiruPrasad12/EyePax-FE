@@ -7,7 +7,7 @@ import router from "../router";
 Vue.use(Vuex);
 
 
-export default  new Vuex.Store({
+export default new Vuex.Store({
   state: {
     current_user_data: null,
     authenticated: false,
@@ -21,29 +21,29 @@ export default  new Vuex.Store({
     currentUser: state => state.current_user_data,
   },
   actions: {
-    async login({ commit },form){
+    async login({ commit }, form) {
       let payload = {
-        email : form.email,
-        password : form.password
+        email: form.email,
+        password: form.password
       }
       let respond = (await authAPI.login(payload)).data
       localStorage.setItem("IsLoggedIn", 'true');
       localStorage.setItem("JWT", respond.token);
-      commit('SET_CURRENT_USER',respond.data.user)
-      if(respond.data.user.account_type === 'admin'){
+      commit('SET_CURRENT_USER', respond.data.user)
+      if (respond.data.user.account_type === 'admin') {
         window.location = '/admin/home'
-      }else if(respond.data.user.account_type === 'supplier'){
+      } else if (respond.data.user.account_type === 'supplier') {
         window.location = '/supplier/home'
-      }else if(respond.data.user.account_type === 'staff'){
-        await router.replace('/admin/home')
-      }else if(respond.data.user.account_type === 'stock-manager'){
+      } else if (respond.data.user.account_type === 'staff') {
+        window.location = '/staff/home'
+      } else if (respond.data.user.account_type === 'stock-manager') {
         await router.replace('/admin/home')
       }
     },
 
-    async autoLogin({ commit }){
+    async autoLogin({ commit }) {
       let respond = (await authAPI.autologin()).data.data
-      commit('SET_CURRENT_USER',respond)
+      commit('SET_CURRENT_USER', respond)
       // if(respond.account_type === 'admin'){
       //   await router.replace('/admin/home')
       // }else if(respond.account_type === 'supplier'){
@@ -55,10 +55,10 @@ export default  new Vuex.Store({
       // }
     },
 
-    async logout({ commit }){
+    async logout({ commit }) {
       localStorage.removeItem("IsLoggedIn");
       localStorage.removeItem("JWT");
-      commit('SET_CURRENT_USER',null)
+      commit('SET_CURRENT_USER', null)
       await router.replace('/')
     }
   }

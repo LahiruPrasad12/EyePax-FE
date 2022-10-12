@@ -2,7 +2,7 @@ import CustomerHome from '../../Views/Customer/index'
 
 export default [
     {
-        path: '/customer/home',
+        path: '/staff/home',
         name: 'customer_home',
         component: CustomerHome
     }
