@@ -171,19 +171,20 @@ export default {
         confirmCustomDelete(data) {
             this.$buefy.dialog.confirm({
                 title: 'Deleting Item',
-                message: 'Are you sure you want to <b style="color:white;">Delete</b> this item? This action cannot be undone.',
-                confirmText: 'Delete Item',
+                message: 'Are you sure you want to <b style="color:white;">Delete</b> this Order? This action cannot be undone.',
+                confirmText: 'Delete Order',
                 type: 'is-danger',
                 hasIcon: true,
-                onConfirm: () => this.deleteItem(data)
+                onConfirm: () => this.deleteOrder(data)
             })
         },
-        async deleteItem(data) {
+        async deleteOrder(data) {
+            console.log(data)
             try {
 
-                await SupplierApis.deleteItem(data._id)
-                this.success('Item Deleted Successfully')
-                await this.getAllItems()
+                await CustomerApis.deleteOrder(data.id)
+                this.success('Order Deleted Successfully')
+                await this.getAllOrders()
             } catch (e) {
                 this.$buefy.toast.open(e.message)
             }
